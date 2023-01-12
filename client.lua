@@ -26,6 +26,7 @@ local global_buy_weapon = ""
 local last_category = ""
 local table_comp_wep = {}
 local ammoTableConfig = {}
+local buyTable = {}
 
 TriggerEvent("gum_menu:getData",function(call)
     MenuData = call
@@ -109,10 +110,10 @@ AddEventHandler("gum_weapons:load_components", function(component)
           if v2[i] ~= nil then
             RemoveWeaponComponentFromPed(ped, GetHashKey(v2[i]), wepHash)
           end
-          if k2 == "BARREL" then
+          if k2 == "Typ hlavně" then
             Citizen.InvokeNative(0x74C9090FDD1BB48E, ped, GetHashKey(v2[1]), wepHash, true)
           end
-          if k2 == "GRIP" then
+          if k2 == "Typ rukojeti" then
             Citizen.InvokeNative(0x74C9090FDD1BB48E, ped, GetHashKey(v2[1]), wepHash, true)
           end
        end
@@ -121,23 +122,21 @@ AddEventHandler("gum_weapons:load_components", function(component)
   end
   Citizen.Wait(400)
   for k,v in pairs(component) do
-    if not string.match(v, "MATERIAL") then
       apply_to_second_weapon_component(v, true)
-    end
   end
   Citizen.Wait(100)
   for k,v in pairs(component) do
-    if string.match(v, "MATERIAL") then
+    if string.match(k, "rytin")  then
       apply_to_second_weapon_component(v, true)
     end
   end
-  Citizen.Wait(100)
   for k,v in pairs(component) do
-    if string.match(v, "ENGRAVING") then
+    if k == "Barva obalu" then
+      RemoveWeaponComponentFromPed(PlayerPedId(), GetHashKey(v), wepHash)
+      Citizen.Wait(200)
       apply_to_second_weapon_component(v, true)
     end
   end
-  
 end)
 
 function apply_to_second_weapon_component(weapon_component_hash)
@@ -267,7 +266,7 @@ RegisterNUICallback('show_store_weapons', function(data, cb)
         end
 			end
 		end
-    end
+  end
 end)
 
 RegisterNUICallback('buy_weapon', function(data, cb)
@@ -303,7 +302,6 @@ RegisterNUICallback('buy_ammo', function(data, cb)
               if Citizen.InvokeNative(0x30E7C16B12DA8211, GetHashKey(d.hashname)) then
                 throwable = true
               end
-
               for k,v in pairs(Config.ammo) do
                 for l,m in pairs(v) do
                   if m.weaponItem ~= nil then
@@ -314,7 +312,6 @@ RegisterNUICallback('buy_ammo', function(data, cb)
                     end
                 end
               end
-
                TriggerServerEvent("gum_weapons:buy_weapon", d.hashname,d.price,j,throwable, idThrowable,countThrowable)
           end
         end
@@ -355,12 +352,12 @@ function createobjectstore(x, y, z, objecthash)
   for k,v in pairs(Config.model_specific_components) do
     if GetHashKey(k) == objecthash then
       for k2,v2 in pairs(v) do
-          if k2 == "BARREL" then
-            apply_weapon_component(v2[1])
-          end
-          if k2 == "GRIP" then
-            apply_weapon_component(v2[1])
-          end
+        if k2 == "Typ hlavně" then
+          apply_weapon_component(v2[1])
+        end
+        if k2 == "Typ rukojeti" then
+          apply_weapon_component(v2[1])
+        end
       end
     end
   end
@@ -375,18 +372,20 @@ function createobject(x, y, z, objecthash)
     if GetHashKey(k) == objecthash then
        for k2,v2 in pairs(v) do
         for i=1, 100 do
-          if k2 == "BARREL" then
+          if k2 == "Typ hlavně" then
             apply_weapon_component(v2[1])
           end
-          if k2 == "GRIP" then
+          if k2 == "Typ rukojeti" then
             apply_weapon_component(v2[1])
           end
        end
       end
     end
   end
-  for k,v in pairs(wep_comps) do
-    apply_weapon_component(v)
+  if wep_comps ~= nil then
+    for k,v in pairs(wep_comps) do
+      apply_weapon_component(v)
+    end
   end
 end  
 
@@ -492,7 +491,7 @@ Citizen.CreateThread(function()
                    Citizen.Wait(2000)
                    -- Open_Main_Menu()
                   Customization_Menu(true)
-
+                  buyTable = {}
                    FreezeEntityPosition(PlayerPedId(),true)
                    createobject(v.PosCus.x, v.PosCus.y, v.PosCus.z, wepHash)
                   StartCam(v.PosCus.x+0.2, v.PosCus.y, v.PosCus.z, 90.0)
@@ -512,6 +511,7 @@ Citizen.CreateThread(function()
   end
 end
 end)
+
 function Customization_Menu(bool)
   SetNuiFocus(bool, bool)
   Menu_Enabled = bool
@@ -522,11 +522,13 @@ function Customization_Menu(bool)
       shared_table = v
     end
   end
+  table.sort(shared_table)
   for k,v in pairs(Config.model_specific_components) do
     if GetHashKey(k) == globalhash then
       global_table = v
     end
   end
+  table.sort(global_table)
   for k,v in pairs(Config.shared_components) do
     if k == weapon_type then
        for k2,v2 in pairs(v) do
@@ -709,7 +711,8 @@ function Customization_Menu(bool)
     status = bool,
     table_shared = shared_table,
     table_glob = global_table,
-    table_comps = wep_comps
+    table_comps = wep_comps,
+    weapType = weapon_type,
     })
 end
 
@@ -740,16 +743,16 @@ Citizen.CreateThread(function()
     while true do 
         Citizen.Wait(10)
         local sleep = true
-		if createdobject then
-			if cal == true then
-				sum = 0
-				for k,v in pairs(pricing) do
-					sum = sum + v.price
-				end
-				cal = false
-			end
-			DrawLightWithRange(tonumber(string.format("%.2f", -281.20)), tonumber(string.format("%.2f", 779.86)), tonumber(string.format("%.2f", 119.56+1.0)), 255, 255, 255, tonumber(string.format("%.2f", 10.0)), tonumber(string.format("%.2f", 30.0)))
-    end
+        if createdobject then
+          if cal == true then
+            sum = 0
+            for k,v in pairs(pricing) do
+              sum = sum + v.price
+            end
+            cal = false
+          end
+          DrawLightWithRange(tonumber(string.format("%.2f", -281.20)), tonumber(string.format("%.2f", 779.86)), tonumber(string.format("%.2f", 119.56+1.0)), 255, 255, 255, tonumber(string.format("%.2f", 10.0)), tonumber(string.format("%.2f", 30.0)))
+        end
 	end
 end)
 
@@ -814,24 +817,7 @@ RegisterNUICallback('delete_prop', function(data, cb)
   end
 end)
 
-RegisterNUICallback('set_skin', function(data, cb)
-  local send_price = 0
-  local price, name = category_check(data.load_now)
-  trans_price_table[name] = price
-  
-  if data.sended == "global" then
-    apply_weapon_component(data.load_now)
-  else
-    apply_weapon_component(data.load_now)
-  end
-  for k,v in pairs(trans_price_table) do
-    send_price = send_price+v
-  end
-  last_component = data.load_now
-  last_category = name
-  
-  SendNUIMessage({type = "compo_price", comp_price = send_price})
-end)
+
 
 RegisterNUICallback('reset_skin', function(data, cb)
   trans_price_table[last_category] = nil
@@ -853,7 +839,6 @@ RegisterNUICallback('reset_skin', function(data, cb)
     send_price = send_price+v
   end
   SendNUIMessage({type = "compo_price", comp_price = send_price})
-
 end)
 
 
@@ -890,271 +875,45 @@ function category_check(data)
   return category_price, category_name
 end
 
+RegisterNUICallback('compData', function(data, cb)
+  if data.comp == "cleanIt" then
+    buyTable[lastCategory] = "none"
+    if Citizen.InvokeNative(0x76A18844E743BF91, wepobject, GetHashKey(lastComp)) then
+      Citizen.InvokeNative(0xF7D82B0D66777611, wepobject, GetHashKey(lastComp))
+    end  
+  else
+    lastComp = data.comp
+    lastCategory = data.category
+    buyTable[data.category] = data.comp
+    apply_weapon_component(data.comp)
+  end
+
+
+  local send_price = 0
+  for k,v in pairs(buyTable) do
+    if v ~= "none" then
+      send_price = Config.priceTable[k]+send_price
+    end
+  end
+  SendNUIMessage({type = "compo_price", comp_price = send_price})
+end)
+
 RegisterNUICallback('buy_components', function(data, cb)
   local table_comps = {}
   local send_price = 0
-  for k,v in pairs(Config.shared_components) do
-    if k == weapon_type then
-       for k2,v2 in pairs(v) do
-        for k3,v3 in pairs(v2) do
-          for a,b in pairs(data.table_comp) do
-            if v3 == b.component then
-              if k2 == "MELEE_BLADE_MATERIAL" then
-                table_comp_wep["melee_blade_material"] = v3
-              elseif k2 == "COMPONENT_FISHING_LINE" then
-                table_comp_wep["component_fishing_line"] = v3
-              elseif k2 == "MELEE_BLADE_ENGRAVING" then
-                table_comp_wep["melee_blade_engraving"] = v3
-              elseif k2 == "MELEE_BLADE_ENGRAVING_MATERIAL" then
-                table_comp_wep["melee_blade_engraving_material"] = v3
-              elseif k2 == "BARREL" then
-                table_comp_wep["barrel"] = v3
-              elseif k2 == "GRIP" then
-                table_comp_wep["grip"] = v3
-              elseif k2 == "SIGHT" then
-                table_comp_wep["sight"] = v3
-              elseif k2 == "CLIP" then
-                table_comp_wep["clip"] = v3
-              elseif k2 == "TUBE" then
-                table_comp_wep["tube"] = v3
-              elseif k2 == "WRAP" then
-                table_comp_wep["wrap"] = v3
-              elseif k2 == "MAG" then
-                table_comp_wep["mag"] = v3
-              elseif k2 == "CYLINDER_TINT" then
-                table_comp_wep["cylinder_tint"] = v3
-              elseif k2 == "BARREL_TINT" then
-                table_comp_wep["barrel_tint"] = v3
-              elseif k2 == "TRIGGER_TINT" then
-                table_comp_wep["trigger_tint"] = v3
-              elseif k2 == "FRAME_DATA" then
-                table_comp_wep["frame_data"] = v3
-              elseif k2 == "TORCH" then
-                table_comp_wep["torch"] = v3
-              elseif k2 == "TRIGGER_MATERIAL" then
-                table_comp_wep["trigger_material"] = v3
-              elseif k2 == "SIGHT_MATERIAL" then
-                table_comp_wep["sight_material"] = v3
-              elseif k2 == "HAMMER_MATERIAL" then
-                table_comp_wep["hammer_material"] = v3
-              elseif k2 == "FRAME_MATERIAL" then
-                table_comp_wep["frame_material"] = v3
-              elseif k2 == "FRAME_ENGRAVING" then
-                table_comp_wep["frame_engraving"] = v3
-              elseif k2 == "FRAME_ENGRAVING_MATERIAL" then
-                table_comp_wep["frame_engraving_material"] = v3
-              elseif k2 == "BARREL_MATERIAL" then
-                table_comp_wep["barrel_material"] = v3
-              elseif k2 == "BARREL_ENGRAVING" then
-                table_comp_wep["barrel_engraving"] = v3
-              elseif k2 == "BARREL_ENGRAVING_MATERIAL" then
-                table_comp_wep["barrel_engraving_material"] = v3
-              elseif k2 == "CYLINDER_MATERIAL" then
-                table_comp_wep["cylinder_material"] = v3
-              elseif k2 == "CYLINDER_ENGRAVING" then
-                table_comp_wep["cylinder_engraving"] = v3
-              elseif k2 == "CYLINDER_ENGRAVING_MATERIAL" then
-                table_comp_wep["cylinder_engraving_material"] = v3
-              elseif k2 == "GRIP_MATERIAL" then
-                table_comp_wep["grip_material"] = v3
-              elseif k2 == "GRIPSTOCK_ENGRAVING" then
-                table_comp_wep["gripstock_engraving"] = v3
-              elseif k2 == "BARREL_RIFLING" then
-                table_comp_wep["barrel_rifling"] = v3
-              elseif k2 == "WRAP_MATERIAL" then
-                table_comp_wep["wrap_material"] = v3
-              elseif k2 == "WRAP_TINT" then
-                table_comp_wep["wrap_tint"] = v3
-              elseif k2 == "STRAP" then
-                table_comp_wep["strap"] = v3
-              elseif k2 == "STRAP_TINT" then
-                table_comp_wep["strap_tint"] = v3
-              elseif k2 == "SCOPE" then
-                table_comp_wep["scope"] = v3
-              elseif k2 == "GRIP_TINT" then
-                table_comp_wep["grip_tint"] = v3
-              end
-            end
-          end
-        end
-       end
+  for k,v in pairs(buyTable) do
+    if v ~= "none" then
+      send_price = Config.priceTable[k]+send_price
     end
   end
-  for k,v in pairs(Config.model_specific_components) do
-    if GetHashKey(k) == wepHash then
-      for k2,v2 in pairs(v) do
-        for k3,v3 in pairs(v2) do
-          for a,b in pairs(data.table_comp) do
-            if v3 == b.component then
-              if k2 == "MELEE_BLADE_MATERIAL" then
-                table_comp_wep["melee_blade_material"] = v3
-              elseif k2 == "COMPONENT_FISHING_LINE" then
-                table_comp_wep["component_fishing_line"] = v3
-              elseif k2 == "MELEE_BLADE_ENGRAVING" then
-                table_comp_wep["melee_blade_engraving"] = v3
-              elseif k2 == "MELEE_BLADE_ENGRAVING_MATERIAL" then
-                table_comp_wep["melee_blade_engraving_material"] = v3
-              elseif k2 == "BARREL" then
-                table_comp_wep["barrel"] = v3
-              elseif k2 == "GRIP" then
-                table_comp_wep["grip"] = v3
-              elseif k2 == "SIGHT" then
-                table_comp_wep["sight"] = v3
-              elseif k2 == "CLIP" then
-                table_comp_wep["clip"] = v3
-              elseif k2 == "TUBE" then
-                table_comp_wep["tube"] = v3
-              elseif k2 == "WRAP" then
-                table_comp_wep["wrap"] = v3
-              elseif k2 == "MAG" then
-                table_comp_wep["mag"] = v3
-              elseif k2 == "CYLINDER_TINT" then
-                table_comp_wep["cylinder_tint"] = v3
-              elseif k2 == "BARREL_TINT" then
-                table_comp_wep["barrel_tint"] = v3
-              elseif k2 == "TRIGGER_TINT" then
-                table_comp_wep["trigger_tint"] = v3
-              elseif k2 == "FRAME_DATA" then
-                table_comp_wep["frame_data"] = v3
-              elseif k2 == "TORCH" then
-                table_comp_wep["torch"] = v3
-              elseif k2 == "TRIGGER_MATERIAL" then
-                table_comp_wep["trigger_material"] = v3
-              elseif k2 == "SIGHT_MATERIAL" then
-                table_comp_wep["sight_material"] = v3
-              elseif k2 == "HAMMER_MATERIAL" then
-                table_comp_wep["hammer_material"] = v3
-              elseif k2 == "FRAME_MATERIAL" then
-                table_comp_wep["frame_material"] = v3
-              elseif k2 == "FRAME_ENGRAVING" then
-                table_comp_wep["frame_engraving"] = v3
-              elseif k2 == "FRAME_ENGRAVING_MATERIAL" then
-                table_comp_wep["frame_engraving_material"] = v3
-              elseif k2 == "BARREL_MATERIAL" then
-                table_comp_wep["barrel_material"] = v3
-              elseif k2 == "BARREL_ENGRAVING" then
-                table_comp_wep["barrel_engraving"] = v3
-              elseif k2 == "BARREL_ENGRAVING_MATERIAL" then
-                table_comp_wep["barrel_engraving_material"] = v3
-              elseif k2 == "CYLINDER_MATERIAL" then
-                table_comp_wep["cylinder_material"] = v3
-              elseif k2 == "CYLINDER_ENGRAVING" then
-                table_comp_wep["cylinder_engraving"] = v3
-              elseif k2 == "CYLINDER_ENGRAVING_MATERIAL" then
-                table_comp_wep["cylinder_engraving_material"] = v3
-              elseif k2 == "GRIP_MATERIAL" then
-                table_comp_wep["grip_material"] = v3
-              elseif k2 == "GRIPSTOCK_ENGRAVING" then
-                table_comp_wep["gripstock_engraving"] = v3
-              elseif k2 == "BARREL_RIFLING" then
-                table_comp_wep["barrel_rifling"] = v3
-              elseif k2 == "WRAP_MATERIAL" then
-                table_comp_wep["wrap_material"] = v3
-              elseif k2 == "WRAP_TINT" then
-                table_comp_wep["wrap_tint"] = v3
-              elseif k2 == "STRAP" then
-                table_comp_wep["strap"] = v3
-              elseif k2 == "STRAP_TINT" then
-                table_comp_wep["strap_tint"] = v3
-              elseif k2 == "SCOPE" then
-                table_comp_wep["scope"] = v3
-              elseif k2 == "GRIP_TINT" then
-                table_comp_wep["grip_tint"] = v3
-              end
-            end
-          end
-        end
-      end
-    end
-  end
-  for k,v in pairs(data.table_comp) do
-    if k == "MELEE_BLADE_MATERIAL" and v.value == -1 then
-      table_comp_wep["melee_blade_material"] = nil
-    elseif k == "MELEE_BLADE_ENGRAVING" and v.value == -1 then
-      table_comp_wep["melee_blade_engraving"] = nil
-    elseif k2 == "COMPONENT_FISHING_LINE" then
-      table_comp_wep["component_fishing_line"] = nil
-    elseif k == "MELEE_BLADE_ENGRAVING_MATERIAL" and v.value == -1 then
-      table_comp_wep["melee_blade_engraving_material"] = nil
-    elseif k == "BARREL" and v.value == -1 then
-      table_comp_wep["barrel"] = nil
-    elseif k == "GRIP" and v.value == -1 then
-      table_comp_wep["grip"] = nil
-    elseif k == "SIGHT" and v.value == -1 then
-      table_comp_wep["sight"] = nil
-    elseif k == "CLIP" and v.value == -1 then
-      table_comp_wep["clip"] = nil
-    elseif k == "TUBE" and v.value == -1 then
-      table_comp_wep["tube"] = nil
-    elseif k == "WRAP" and v.value == -1 then
-      table_comp_wep["wrap"] = nil
-    elseif k == "MAG" and v.value == -1 then
-      table_comp_wep["mag"] = nil
-    elseif k == "CYLINDER_TINT" and v.value == -1 then
-      table_comp_wep["cylinder_tint"] = nil
-    elseif k == "BARREL_TINT" and v.value == -1 then
-      table_comp_wep["barrel_tint"] = nil
-    elseif k == "TRIGGER_TINT" and v.value == -1 then
-      table_comp_wep["trigger_tint"] = nil
-    elseif k == "FRAME_DATA" and v.value == -1 then
-      table_comp_wep["frame_data"] = nil
-    elseif k == "TORCH" and v.value == -1 then
-      table_comp_wep["torch"] = nil
-    elseif k == "TRIGGER_MATERIAL" and v.value == -1 then
-      table_comp_wep["trigger_material"] = nil
-    elseif k == "SIGHT_MATERIAL" and v.value == -1 then
-      table_comp_wep["sight_material"] = nil
-    elseif k == "HAMMER_MATERIAL" and v.value == -1 then
-      table_comp_wep["hammer_material"] = nil
-    elseif k == "FRAME_MATERIAL" and v.value == -1 then
-      table_comp_wep["frame_material"] = nil
-    elseif k == "FRAME_ENGRAVING" and v.value == -1 then
-      table_comp_wep["frame_engraving"] = nil
-    elseif k == "FRAME_ENGRAVING_MATERIAL" and v.value == -1 then
-      table_comp_wep["frame_engraving_material"] = nil
-    elseif k == "BARREL_MATERIAL" and v.value == -1 then
-      table_comp_wep["barrel_material"] = nil
-    elseif k == "BARREL_ENGRAVING" and v.value == -1 then
-      table_comp_wep["barrel_engraving"] = nil
-    elseif k == "BARREL_ENGRAVING_MATERIAL" and v.value == -1 then
-      table_comp_wep["barrel_engraving_material"] = nil
-    elseif k == "CYLINDER_MATERIAL" and v.value == -1 then
-      table_comp_wep["cylinder_material"] = nil
-    elseif k == "CYLINDER_ENGRAVING" and v.value == -1 then
-      table_comp_wep["cylinder_engraving"] = nil
-    elseif k == "CYLINDER_ENGRAVING_MATERIAL" and v.value == -1 then
-      table_comp_wep["cylinder_engraving_material"] = nil
-    elseif k == "GRIP_MATERIAL" and v.value == -1 then
-      table_comp_wep["grip_material"] = nil
-    elseif k == "GRIPSTOCK_ENGRAVING" and v.value == -1 then
-      table_comp_wep["gripstock_engraving"] = nil
-    elseif k == "BARREL_RIFLING" and v.value == -1 then
-      table_comp_wep["barrel_rifling"] = nil
-    elseif k == "WRAP_MATERIAL" and v.value == -1  then
-      table_comp_wep["wrap_material"] = nil
-    elseif k == "WRAP_TINT" and v.value == -1 then
-      table_comp_wep["wrap_tint"] = nil
-    elseif k == "STRAP" and v.value == -1  then
-      table_comp_wep["strap"] = nil
-    elseif k == "STRAP_TINT" and v.value == -1  then
-      table_comp_wep["strap_tint"] = nil
-    elseif k == "SCOPE" and v.value == -1 then
-      table_comp_wep["scope"] = nil
-    elseif k == "GRIP_TINT" and v.value == -1 then
-      table_comp_wep["grip_tint"] = nil
-    end
-  end
-  Citizen.Wait(50)
-  for k,v in pairs(table_comp_wep) do
-    table.insert(table_comps, v)
-  end
-  for k,v in pairs(trans_price_table) do
-    send_price = send_price+v
+  for a,b in pairs(buyTable) do
+    wep_comps[a] = b
   end
   Citizen.Wait(0)
   close_store()
 
-  TriggerServerEvent("gum_weapons:save_comps", table_comps, globalhash, send_price)
+  TriggerServerEvent("gum_weapons:save_comps", wep_comps, globalhash, send_price)
+  buyTable = {}
 end)
 
 local geared = false
@@ -1174,6 +933,7 @@ RegisterCommand(""..Config.Language[14].text.."", function(source)
     end
   end
 end)
+
 
 RegisterNUICallback('set_camera', function(data, cb)
   if weapon_type == "LONGARM" then

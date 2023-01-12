@@ -20,4 +20,11 @@ files {
     'html/index.html',
     'html/crock.ttf',
     'html/images/*.png',
+    'html/images/MATERIAL_COLOR/*.png',
+    'html/images/GRIPSTOCK_ENGRAVING_SHORTARM/*.png',
+    'html/images/GRIPSTOCK_ENGRAVING_LONGARM/*.png',
+    'html/images/MATERIAL_ENGRAVING_COLOR/*.png',
+    'html/images/ENGRAVING/*.png',
+    'html/images/BARREL/*.png',
+    'html/images/WRAP_COLOR/*.png',
 }

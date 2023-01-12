@@ -1,4 +1,5 @@
 var shared_table = {}
+var global_table = {}
 var weapon_table = {}
 var ammo_table = {}
 var comp_table = {}
@@ -6,20 +7,21 @@ var buy_table = {}
 var value = 1
 var block_spam = false
 var value_ammo = 1
-
+var backupMe = undefined
+var overMe = false
 $(document).keydown(function(e){
 	var close = 27, close2 = 8;
 	switch (e.keyCode) {
 		case close:
 			$.post('http://gum_weapons/exit')
+            backupMe = undefined
 		break;
         case close2:
 			$.post('http://gum_weapons/exit')
+            backupMe = undefined
 		break;
-
 	}
 });
-
 
 $(function () {
     function display(bool) {
@@ -62,6 +64,7 @@ $(function () {
                 global_table = item.table_glob
                 comp_table = item.table_comps
                 shared_data(item.table_shared, item.table_glob)
+                weapType = item.weapType
                 document.getElementById('component_for_buy').innerHTML = "Cena";
             } else {
                 display(false)
@@ -175,6 +178,7 @@ function buy_ammo(){
 function buy_weapon(){
     $.post('http://gum_weapons/buy_ammo', JSON.stringify({}));
 }
+
 function wep_switch_right2(keys3){
     if (block_spam == false ){
         for(var key in ammo_table){
@@ -206,110 +210,140 @@ function load_ammo_price(price_value, ammo_name){
     document.getElementById('weapon_for_buy').innerHTML = ammo_name+"</br>"+price_value+"$";
 }
 
-
-function shared_data(shared_table_pars, specifi_table_pars){
+function shared_data(){
     const tableBody = document.getElementById('shared_table');
     let dataHtml = '';
     buy_table = {}
-    dataHtml += '<div class="grid-item2">Upgrade</div></br>'
-    number_set = -1
-    for(var key in shared_table_pars){
-        if ((!key.match(/ENGRAVING/g)) && (!key.match(/MATERIAL/g))) {
-            for (var i = 0; i < 20; i++) {
-                for (var key2 in comp_table){
-                    if (shared_table_pars[key][i] == comp_table[key2]){
-                        number_set = i
-                    }
-                }
-            }
-            dataHtml += '<div class="grid-item" onclick="set_camera(\''+ key +'\')"><div id="left" onclick="switch_left(\''+ key +'\')"></div><div id="right" onclick="switch_right(\''+ key +'\')"></div><div id="input_value_'+key+'" class="input_value">'+number_set+'</div>'+key.replace("_", " ")+'</div>';
-       }
-   }
-   dataHtml += '</br></br></br>'
-   dataHtml += '<div class="grid-item2">Material</div></br>'
-   number_set = -1
-   for(var key in shared_table_pars){
-        if ((!key.match(/ENGRAVING/g)) && (key.match(/MATERIAL/g))) {
-            for (var i = 0; i < 20; i++) {
-                for (var key2 in comp_table){
-                    if (shared_table_pars[key][i] == comp_table[key2]){
-                        number_set = i
-                    }
-                }
-            }
-        dataHtml += '<div class="grid-item" onclick="set_camera(\''+ key +'\')"><div id="left" onclick="switch_left(\''+ key +'\')"></div><div id="right" onclick="switch_right(\''+ key +'\')"></div><div id="input_value_'+key+'" class="input_value">'+number_set+'</div>'+key.replace("_", " ")+'</div>';
+
+    for (var k in shared_table) {
+        // var str = k
+        // const result1 = str.replaceAll('_', ' ');
+        dataHtml += '<div onclick="openMe(\''+ k +'\')" class="grid-item2" id="gridInfo'+k+'"><div id="text">'+k+'</div></div>'
+    }
+    dataHtml += "</br>"
+    for (var k in global_table) {
+        // var str = k
+        // const result1 = str.replaceAll('_', ' ');
+        if (k !== "Rytiny na rámu") {
+            dataHtml += '<div onclick="openMe2(\''+ k +'\')" class="grid-item2" id="gridInfo'+k+'"><div id="text">'+k+'</div></div>'
         }
     }
-    dataHtml += '</br></br></br>'
-    dataHtml += '<div class="grid-item2">Engraving</div></br>'
-    number_set = -1
-    for(var key in shared_table_pars){
-       if ((key.match(/CYLINDER_ENGRAVING/g)) && (!key.match(/CYLINDER_ENGRAVING_MATERIAL/g))) {
-            for (var i = 0; i < 20; i++) {
-                for (var key2 in comp_table){
-                    if (shared_table_pars[key][i] == comp_table[key2]){
-                        number_set = i
-                    }
-                }
-            }
-        dataHtml += '<div class="grid-item" onclick="set_camera(\''+ key +'\')" ><div id="left" onclick="switch_left(\''+ key +'\')"></div><div id="right" onclick="switch_right(\''+ key +'\')"></div><div id="input_value_'+key+'" class="input_value">'+number_set+'</div>'+key.replace("_", " ")+'</div>';
-        }
+
+    tableBody.innerHTML = dataHtml
+    for (var k in shared_table) {
+        document.getElementById("gridInfo"+k+"").style.height = "20px"; 
     }
-    number_set = -1
-    for(var key in shared_table_pars){
-        if ((key.match(/ENGRAVING/g)) && (!key.match(/ENGRAVING_MATERIAL/g)) && (!key.match(/CYLINDER_ENGRAVING/g)) && (!key.match(/GRIPSTOCK_ENGRAVING/g))) {
-                for (var i = 0; i < 20; i++) {
-                    for (var key2 in comp_table){
-                        if (shared_table_pars[key][i] == comp_table[key2]){
-                            number_set = i
+    for (var k in global_table) {
+        document.getElementById("gridInfo"+k+"").style.height = "20px"; 
+    }
+    load_components()
+}
+
+function openMe(k) {
+    if (overMe == false) {
+        if (document.getElementById("gridInfo"+k+"").style.height == "20px") {
+            if (backupMe !== undefined && backupMe !== null) {
+                document.getElementById("gridInfo"+backupMe+"").style.height = "20px"; 
+                document.getElementById("gridInfo"+backupMe+"").innerHTML = '<div id="text">'+backupMe+'</div>'
+                document.getElementById("gridInfo"+backupMe+"").style.overflowY = "hidden";
+                $("#selectMe").hide();
+            }
+            backupMe = k
+
+            document.getElementById("gridInfo"+k+"").style.height = "100px"; 
+            document.getElementById("gridInfo"+k+"").style.overflowY = "scroll";
+            $("#selectMe").show();
+            for (var a in shared_table) {
+                if (k == a) {
+                    let dataHtml2 = '';
+                    const tableBody2 = document.getElementById('gridInfo'+k+'');
+                    var data = shared_table[k]
+                    dataHtml2 += '<div id="selectMe" onclick="useComponent(\'cleanIt\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/clean.png" width="32" height="32"></div>'
+                    for (var b in data) {
+                        if (weapType == "SHORTARM") {
+                            if (k == "Materiál spouště" || k == "Materiál hledí"|| k == "Materiál kohoutu"|| k == "Materiál hlavně"|| k == "Materiál válce" || k == "Materiál rámu" || k == "Materiál čepele") {
+                                dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/MATERIAL_COLOR/'+data[b].replace(/\D/g, '')+'.png" width="32" height="32"></div>'
+                            } else if (k == "Barva rytin na rámu" || k == "Barva rytin na válci"|| k == "Barva rytin na hlavni"|| k == "Barva rytin na čepeli") {
+                                dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/MATERIAL_ENGRAVING_COLOR/'+data[b].replace(/\D/g, '')+'.png" width="32" height="32"></div>'
+                            } else if (k == "Rytiny na rukojeti") {
+                                dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/GRIPSTOCK_ENGRAVING_SHORTARM/'+data[b].replace(/\D/g, '')+'.png" width="32" height="32"></div>'
+                            } else if (k == "Rytiny na hlavni" || k == "Rytiny na válci" || k == "Rytiny na rámu" || k == "Rytiny na čepeli") {
+                                dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/ENGRAVING/'+data[b].replace(/\D/g, '')+'.png" width="32" height="32"></div>'
+                            } else if (k == "Barva obalu") {
+                                dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/WRAP_COLOR/'+b+'.png" width="32" height="32"></div>'
+                            } else {
+                                dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/BARREL/1.png" width="32" height="32"></div>'
+                            }
+                        } else {
+                            if (k == "Materiál spouště" || k == "Materiál hledí"|| k == "Materiál kohoutu"|| k == "Materiál hlavně"|| k == "Materiál válce"|| k == "Materiál rámu" || k == "Materiál čepele") {
+                                dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/MATERIAL_COLOR/'+data[b].replace(/\D/g, '')+'.png" width="32" height="32"></div>'
+                            } else if (k == "Barva rytin na rámu" || k == "Barva rytin na válci"|| k == "Barva rytin na hlavni" || k == "Barva rytin na čepeli") {
+                                dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/MATERIAL_ENGRAVING_COLOR/'+data[b].replace(/\D/g, '')+'.png" width="32" height="32"></div>'
+                            } else if (k == "Rytiny na rukojeti") {
+                                dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/GRIPSTOCK_ENGRAVING_LONGARM/'+data[b].replace(/\D/g, '')+'.png" width="32" height="32"></div>'
+                            } else if (k == "Rytiny na hlavni" || k == "Rytiny na válci" || k == "Rytiny na rámu" || k == "Rytiny na čepeli") {
+                                dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/ENGRAVING/'+data[b].replace(/\D/g, '')+'.png" width="32" height="32"></div>'
+                            } else if (k == "Barva obalu") {
+                                dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/WRAP_COLOR/'+b+'.png" width="32" height="32"></div>'
+                            } else {
+                            dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/BARREL/1.png" width="32" height="32"></div>'
+                            }
                         }
                     }
+                    tableBody2.innerHTML = dataHtml2
                 }
-        dataHtml += '<div class="grid-item" onclick="set_camera(\''+ key +'\')"><div id="left" onclick="switch_left(\''+ key +'\')"></div><div id="right" onclick="switch_right(\''+ key +'\')"></div><div id="input_value_'+key+'" class="input_value">'+number_set+'</div>'+key.replace("_", " ")+'</div>';
+            }
+        } else {
+            document.getElementById("gridInfo"+k+"").style.height = "20px"; 
+            document.getElementById("gridInfo"+k+"").innerHTML = '<div id="text">'+k+'</div>'
+            document.getElementById("gridInfo"+k+"").style.overflowY = "hidden";
+            $("#selectMe").hide();
         }
-     }
-     number_set = -1
-     for(var key in shared_table_pars){
-        if ((key.match(/ENGRAVING/g)) && (!key.match(/ENGRAVING_MATERIAL/g)) && (!key.match(/CYLINDER_ENGRAVING/g)) && (key.match(/GRIPSTOCK_ENGRAVING/g))) {
-            for (var i = 0; i < 20; i++) {
-                for (var key2 in comp_table){
-                    if (shared_table_pars[key][i] == comp_table[key2]){
-                        number_set = i
+    }
+}
+function openMe2(k) {
+    if (overMe == false) {
+        if (document.getElementById("gridInfo"+k+"").style.height == "20px") {
+            if (backupMe !== undefined && backupMe !== null) {
+                document.getElementById("gridInfo"+backupMe+"").style.height = "20px"; 
+                document.getElementById("gridInfo"+backupMe+"").innerHTML = '<div id="text">'+backupMe+'</div>'
+                document.getElementById("gridInfo"+backupMe+"").style.overflowY = "hidden";
+                $("#selectMe").hide();
+            }
+            backupMe = k
+            
+            document.getElementById("gridInfo"+k+"").style.height = "100px"; 
+            $("#selectMe").show();
+            let dataHtml2 = '';
+            const tableBody2 = document.getElementById('gridInfo'+k+'');
+            dataHtml2 += '<div id="selectMe" onclick="useComponent(\'cleanIt\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/clean.png" width="32" height="32"></div>'
+            for (var a in global_table) {
+                if (k == a) {
+                    var data = global_table[k]
+                    for (var b in data) {
+                        dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/BARREL/1.png" width="32" height="32"></div>'
                     }
+                    tableBody2.innerHTML = dataHtml2
                 }
             }
-            dataHtml += '<div class="grid-item" onclick="set_camera(\''+ key +'\')"><div id="left" onclick="switch_left(\''+ key +'\')"></div><div id="right" onclick="switch_right(\''+ key +'\')"></div><div id="input_value_'+key+'" class="input_value">'+number_set+'</div>'+key.replace("_", " ")+'</div>';
+        } else {
+            document.getElementById("gridInfo"+k+"").style.height = "20px"; 
+            document.getElementById("gridInfo"+k+"").innerHTML = '<div id="text">'+k+'</div>'
+            $("#selectMe").hide();
         }
-     }
-     dataHtml += '</br>'
-     number_set = -1
-     for(var key in shared_table_pars) {
-       if (key.match(/ENGRAVING_MATERIAL/g)) {
-        for (var i = 0; i < 20; i++) {
-            for (var key2 in comp_table){
-                if (shared_table_pars[key][i] == comp_table[key2]){
-                    number_set = i
-                }
-            }
-        }
-        dataHtml += '<div class="grid-item" onclick="set_camera(\''+ key +'\')"><div id="left" onclick="switch_left(\''+ key +'\')"></div><div id="right" onclick="switch_right(\''+ key +'\')"></div><div id="input_value_'+key+'" class="input_value">'+number_set+'</div>'+key.replace("_", " ")+'</div>';
-       }
     }
-    dataHtml += '</br></br></br>'
-    dataHtml += '<div class="grid-item2">Styling</div></br>'
-    number_set = -1
-    for(var key in specifi_table_pars){
-        for (var i = 0; i < 20; i++) {
-            for (var key2 in comp_table){
-                if (specifi_table_pars[key][i] == comp_table[key2]){
-                    number_set = i
-                }
-            }
-        }
-        dataHtml += '<div class="grid-item" onclick="set_camera(\''+ key +'\')"><div id="left" onclick="switch_left2(\''+ key +'\')"></div><div id="right" onclick="switch_right2(\''+ key +'\')"></div><div id="input_value_'+key+'" class="input_value">'+number_set+'</div>'+key.replace("_", " ")+'</div>';
-    }
-    tableBody.innerHTML = dataHtml
-    load_components()
+}
+
+function useComponent(comp, category) {
+    $.post('http://gum_weapons/compData', JSON.stringify({ comp: comp, category:category}));
+}
+
+function overMouse() {
+    overMe = true
+}
+
+function outMouse() {
+    overMe = false
 }
 
 function load_components(){

@@ -53,12 +53,12 @@ AddEventHandler("gum_weapons:check_comps", function(weapon_id)
          end
      end)
 end)
+
 RegisterServerEvent("gum_weapons:getAllHash")
 AddEventHandler("gum_weapons:getAllHash", function()
     local _source = source
     local printData = gumInv.check_weapontable(_source)
     TriggerClientEvent("gum_weapons:sendAllHash", _source, printData)
-
 end)
 
 for a,b in pairs(Config.ammo) do

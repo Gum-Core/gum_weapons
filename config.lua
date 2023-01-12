@@ -14,42 +14,48 @@ Config.Language = {
   [11] = {text="Open store"},
   [12] = {text="Open customization"},  
   [13] = {text="Someone is much close."},
-  [14] = {text="scope"},--Command for put down scope (only for buyed scopes)
+  [14] = {text="Zaměřovač"},--Command for put down scope (only for buyed scopes)
   [15] = {text="You buy ammo for : "},
   [16] = {text="Your weapon is full, you get back box : "},
   [17] = {text="You have under 50% ammo, you refill your weapon."}
 }
 
 Config.priceTable = {
-    STRAP_TINT = 0.55,
-    STRAP = 0.55,
-    SCOPE = 10.55,
-    BARREL_RIFLING = 8.55,
-    WRAP_TINT = 2.55,
-    WRAP_MATERIAL = 0.55,
-    HAMMER_MATERIAL = 1.25,
-    BARREL_MATERIAL = 1.25,
-    FRAME_MATERIAL = 1.25,
-    CYLINDER_MATERIAL = 1.25,
-    SIGHT_MATERIAL = 1.25,
-    TRIGGER_MATERIAL = 1.25,
-    GRIP_MATERIAL = 1.25,
-    BARREL_MATERIAL = 1.25,
-    CYLINDER_ENGRAVING = 0.55,
-    BARREL_ENGRAVING = 0.55,
-    FRAME_ENGRAVING = 0.55,
-    GRIPSTOCK_ENGRAVING = 0.55,
-    CYLINDER_ENGRAVING_MATERIAL = 1.25,
-    BARREL_ENGRAVING_MATERIAL = 1.25,
-    FRAME_ENGRAVING_MATERIAL = 1.25,
-    GRIPSTOCK_ENGRAVING_MATERIAL = 1.25,
-    GRIP = 2.55,
-    BARREL = 3.80,
-    SIGHT = 1.50,
-    FRAME_VERTDATA = 2.60,
-    CYLINDER_TING = 1.20,
-    TRIGGER_TINT = 1.20,
-    FISHING_LINE = 1.0,
+   ["Typ hlavně"] = 0.55,
+   ["Typ obalu"] = 2.55,
+   ["Materiál kohoutu"] = 1.25,
+   ["Materiál rámu"] = 1.25,
+   ["Typ hledí"] = 1.25,
+   ["Materiál spouště"] = 1.25,
+   ["Typ rukojeti"] = 1.25,
+   ["Rytiny na rámu"] = 1.25,
+   ["Materiál hledí"] = 1.50,
+   ["Typ kompletu"] = 1.0,
+   ["Typ zásobníku"] = 1.0,
+   ["Barva rytin na rámu"] = 0.55,
+   ["Materiál hlavně"] = 0.55,
+   ["Rytiny na hlavni"] = 0.55,
+   ["Barva rytin na hlavni"] = 0.55,
+   ["Materiál válce"] = 0.55,
+   ["Rytiny na válci"] = 0.55,
+   ["Barva rytin na válci"] = 0.55,
+   ["Materiál rukojeti"] = 0.55,
+   ["Rytiny na rukojeti"] = 0.55,
+   ["Vybroušení hlavně"] = 0.55,
+   ["Materiál obalu"] = 0.55,
+   ["Barva obalu"] = 0.55,
+   ["Popruh"] = 0.55,
+   ["Barva popruhu"] = 0.55,
+   ["Zaměřovač"] = 0.55,
+   ["STOCK"] = 0.55,
+   ["Barva dřeva"] = 0.55,
+   ["Barva kůže"] = 0.55,
+   ["Barva šňůry"] = 0.55,
+   ["Vlasec se splávek"] = 0.01,
+   ["Materiál čepele"] = 0.20,
+   ["Rytiny na čepeli"] = 0.20,
+   ["Barva rytin na čepeli"] = 0.20,
+   ["Materiál rukojeti"] = 0.20,
 }
 
 Config.weaponShops = { 
@@ -1281,12 +1287,12 @@ Config.weapon_object_load_for_redner = {
 
   Config.model_specific_components = {
     ["WEAPON_REVOLVER_CATTLEMAN"] = {
-        ["BARREL"] = {
+        ["Typ hlavně"] = {
           "COMPONENT_REVOLVER_CATTLEMAN_BARREL_SHORT",
           "COMPONENT_REVOLVER_CATTLEMAN_BARREL_LONG",
           --"COMPONENT_REVOLVER_CATTLEMAN_BARREL_LEGENDARY",
         },
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_REVOLVER_CATTLEMAN_GRIP",
           "COMPONENT_REVOLVER_CATTLEMAN_GRIP_PEARL",
           "COMPONENT_REVOLVER_CATTLEMAN_GRIP_EBONY",
@@ -1295,20 +1301,20 @@ Config.weapon_object_load_for_redner = {
           "COMPONENT_REVOLVER_CATTLEMAN_GRIP_BURLED",
           "COMPONENT_REVOLVER_CATTLEMAN_GRIP_LEGENDARY",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_REVOLVER_CATTLEMAN_SIGHT_NARROW",
           "COMPONENT_REVOLVER_CATTLEMAN_SIGHT_WIDE",
         },
-        -- ["FRAME_VERTDATA"] = {
-        --   "COMPONENT_SHORTARM_ROLE_ENGRAVING_CATTLEMAN_LEGENDARY",
-        -- },
+        ["Typ kompletu"] = {
+          "COMPONENT_SHORTARM_ROLE_ENGRAVING_CATTLEMAN_LEGENDARY",
+        },
     },
     ["WEAPON_REVOLVER_DOUBLEACTION"] = {
-        ["BARREL"] = {
+        ["Typ hlavně"] = {
           "COMPONENT_REVOLVER_DOUBLEACTION_BARREL_SHORT",
           "COMPONENT_REVOLVER_DOUBLEACTION_BARREL_LONG",
         },
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_REVOLVER_DOUBLEACTION_GRIP",
           "COMPONENT_REVOLVER_DOUBLEACTION_GRIP_EBONY",
           "COMPONENT_REVOLVER_DOUBLEACTION_GRIP_IRONWOOD",
@@ -1316,23 +1322,23 @@ Config.weapon_object_load_for_redner = {
           "COMPONENT_REVOLVER_DOUBLEACTION_GRIP_BAD_HONOR",
           "COMPONENT_REVOLVER_DOUBLEACTION_GRIP_BURLED",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_REVOLVER_DOUBLEACTION_SIGHT_WIDE",
           "COMPONENT_REVOLVER_DOUBLEACTION_SIGHT_NARROW",
         },
     },
     ["WEAPON_REVOLVER_DOUBLEACTION_EXOTIC"] = {
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_REVOLVER_DOUBLEACTION_GRIP_EXOTIC",
         },  
     },
     ["WEAPON_REVOLVER_SCHOFIELD"] = {
-        ["BARREL"] = {
+        ["Typ hlavně"] = {
           "COMPONENT_REVOLVER_SCHOFIELD_BARREL_SHORT",
           "COMPONENT_REVOLVER_SCHOFIELD_BARREL_LONG",
           "COMPONENT_REVOLVER_SCHOFIELD_BARREL_BOUNTY",
         },
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_REVOLVER_SCHOFIELD_GRIP",
           "COMPONENT_REVOLVER_SCHOFIELD_GRIP_PEARL",
           "COMPONENT_REVOLVER_SCHOFIELD_GRIP_IRONWOOD",
@@ -1340,22 +1346,22 @@ Config.weapon_object_load_for_redner = {
           "COMPONENT_REVOLVER_SCHOFIELD_GRIP_BOUNTY",
           "COMPONENT_REVOLVER_SCHOFIELD_GRIP_BURLED",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_REVOLVER_SCHOFIELD_SIGHT_NARROW",
           "COMPONENT_REVOLVER_SCHOFIELD_SIGHT_WIDE",
           "COMPONENT_REVOLVER_SCHOFIELD_SIGHT_BOUNTY",
         },
-        -- ["FRAME_VERTDATA"] = {
-        --   "COMPONENT_SHORTARM_FRAME_ENGRAVING_SCHOFIELD_BOUNTY",
-        -- },
+        ["Typ kompletu"] = {
+          "COMPONENT_SHORTARM_FRAME_ENGRAVING_SCHOFIELD_BOUNTY",
+        },
     },
     ["WEAPON_PISTOL_MAUSER"] = {
-        ["BARREL"] = {
+        ["Typ hlavně"] = {
           "COMPONENT_PISTOL_MAUSER_BARREL_SHORT",
           "COMPONENT_PISTOL_MAUSER_BARREL_LONG",
           "COMPONENT_PISTOL_MAUSER_BARREL_AZTEC",
         },
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_PISTOL_MAUSER_GRIP",
           "COMPONENT_PISTOL_MAUSER_GRIP_PEARL",
           "COMPONENT_PISTOL_MAUSER_GRIP_EBONY",
@@ -1363,35 +1369,35 @@ Config.weapon_object_load_for_redner = {
           "COMPONENT_PISTOL_MAUSER_GRIP_BURLED",
           "COMPONENT_PISTOL_MAUSER_GRIP_AZTEC",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_PISTOL_MAUSER_SIGHT_NARROW",
           "COMPONENT_PISTOL_MAUSER_SIGHT_WIDE",
         },
-        ["CLIP"] = {
+        ["Typ zásobníku"] = {
           "COMPONENT_PISTOL_MAUSER_CLIP",
           "COMPONENT_PISTOL_MAUSER_CLIP_EMPTY",
         },
-        -- ["FRAME_VERTDATA"] = {
-        --   "COMPONENT_SHORTARM_ROLE_ENGRAVING_MAUSER_AZTEC",
-        -- }
+        ["Typ kompletu"] = {
+          "COMPONENT_SHORTARM_ROLE_ENGRAVING_MAUSER_AZTEC",
+        }
     },
     ["WEAPON_PISTOL_SEMIAUTO"] = {
-        ["BARREL"] = {
+        ["Typ hlavně"] = {
           "COMPONENT_PISTOL_SEMIAUTO_BARREL_SHORT",
           "COMPONENT_PISTOL_SEMIAUTO_BARREL_LONG",
         },
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_PISTOL_SEMIAUTO_GRIP",
           "COMPONENT_PISTOL_SEMIAUTO_GRIP_PEARL",
           "COMPONENT_PISTOL_SEMIAUTO_GRIP_IRONWOOD",
           "COMPONENT_PISTOL_SEMIAUTO_GRIP_EBONY",
           "COMPONENT_PISTOL_SEMIAUTO_GRIP_BURLED",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_PISTOL_SEMIAUTO_SIGHT_NARROW",
           "COMPONENT_PISTOL_SEMIAUTO_SIGHT_WIDE",
         },
-        ["CLIP"] = {
+        ["Typ zásobníku"] = {
           "COMPONENT_PISTOL_SEMIAUTO_CLIP",
         },
     },
@@ -1399,12 +1405,12 @@ Config.weapon_object_load_for_redner = {
 
 
     ["WEAPON_PISTOL_VOLCANIC"] = {
-        ["BARREL"] = {
+        ["Typ hlavně"] = {
           "COMPONENT_PISTOL_VOLCANIC_BARREL_SHORT",
           "COMPONENT_PISTOL_VOLCANIC_BARREL_LONG",
           "COMPONENT_PISTOL_VOLCANIC_BARREL_COLLECTOR",
         },
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_PISTOL_VOLCANIC_GRIP",
           "COMPONENT_PISTOL_VOLCANIC_GRIP_PEARL",
           "COMPONENT_PISTOL_VOLCANIC_GRIP_EBONY",
@@ -1412,72 +1418,72 @@ Config.weapon_object_load_for_redner = {
           "COMPONENT_PISTOL_VOLCANIC_GRIP_COLLECTOR",
           "COMPONENT_PISTOL_VOLCANIC_GRIP_BURLED",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_PISTOL_VOLCANIC_SIGHT_NARROW",
           "COMPONENT_PISTOL_VOLCANIC_SIGHT_WIDE",
           "COMPONENT_PISTOL_VOLCANIC_SIGHT_COLLECTOR",
         },
-        -- ["FRAME_VERTDATA"] = {
-        --   "COMPONENT_SHORTARM_FRAME_ENGRAVING_VOLCANIC_COLLECTOR",
-        -- },
+        ["Typ kompletu"] = {
+          "COMPONENT_SHORTARM_FRAME_ENGRAVING_VOLCANIC_COLLECTOR",
+        },
 
     },
 
 
     ["WEAPON_PISTOL_M1899"] = {
-        ["BARREL"] = {
+        ["Typ hlavně"] = {
           "COMPONENT_PISTOL_M1899_BARREL_SHORT",
           "COMPONENT_PISTOL_M1899_BARREL_LONG",
         },
-        ["CLIP"] = {
+        ["Typ zásobníku"] = {
           "COMPONENT_PISTOL_M1899_CLIP",
         },
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_PISTOL_M1899_GRIP",
           "COMPONENT_PISTOL_M1899_GRIP_IRONWOOD",
           "COMPONENT_PISTOL_M1899_GRIP_PEARL",
           "COMPONENT_PISTOL_M1899_GRIP_EBONY",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_PISTOL_M1899_SIGHT_NARROW",
           "COMPONENT_PISTOL_M1899_SIGHT_WIDE",
         },
     },
 
     ["WEAPON_REVOLVER_LEMAT"] = {
-        ["BARREL"] = {
+        ["Typ hlavně"] = {
           "COMPONENT_REVOLVER_LEMAT_BARREL_SHORT",
           "COMPONENT_REVOLVER_LEMAT_BARREL_LONG",
         },
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_REVOLVER_LEMAT_GRIP",
           "COMPONENT_REVOLVER_LEMAT_GRIP_PEARL",
           "COMPONENT_REVOLVER_LEMAT_GRIP_EBONY",
           "COMPONENT_REVOLVER_LEMAT_GRIP_IRONWOOD",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_REVOLVER_LEMAT_SIGHT_NARROW",
           "COMPONENT_REVOLVER_LEMAT_SIGHT_WIDE",
         },
     },
 
     ["WEAPON_REVOLVER_NAVY"] = {
-        ["BARREL"] = {
+        ["Typ hlavně"] = {
           "COMPONENT_REVOLVER_NAVY_BARREL_SHORT",
           "COMPONENT_REVOLVER_NAVY_BARREL_LONG",
-          "COMPONENT_REVOLVER_NAVY_BARREL_CROSSOVER",
+          -- "COMPONENT_REVOLVER_NAVY_BARREL_CROSSOVER",
         },
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_REVOLVER_NAVY_GRIP",
           "COMPONENT_REVOLVER_NAVY_GRIP_IRONWOOD",
           "COMPONENT_REVOLVER_NAVY_GRIP_PEARL",
           "COMPONENT_REVOLVER_NAVY_GRIP_EBONY",
-          "COMPONENT_REVOLVER_NAVY_GRIP_CROSSOVER",
+          -- "COMPONENT_REVOLVER_NAVY_GRIP_CROSSOVER",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_REVOLVER_NAVY_SIGHT_NARROW",
           "COMPONENT_REVOLVER_NAVY_SIGHT_WIDE",
-          "COMPONENT_REVOLVER_NAVY_SIGHT_CROSSOVER",
+          -- "COMPONENT_REVOLVER_NAVY_SIGHT_CROSSOVER",
         },
     },
 
@@ -1485,23 +1491,23 @@ Config.weapon_object_load_for_redner = {
 
     ["WEAPON_REPEATER_CARBINE"] = {
 
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_REPEATER_CARBINE_GRIP",
           "COMPONENT_REPEATER_CARBINE_GRIP_IRONWOOD",
           "COMPONENT_REPEATER_CARBINE_GRIP_ENGRAVED",
           "COMPONENT_REPEATER_CARBINE_GRIP_BURLED",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_REPEATER_CARBINE_SIGHT_NARROW",
           "COMPONENT_REPEATER_CARBINE_SIGHT_WIDE",
         },
-        ["CLIP"] = {
+        ["Typ zásobníku"] = {
           "COMPONENT_REPEATER_CARBINE_CLIP",
         },
-        ["TUBE"] = {
+        ["Typ roury"] = {
           "COMPONENT_REPEATER_CARBINE_TUBE",
         },
-        ["WRAP"] = {
+        ["Typ obalu"] = {
           "COMPONENT_REPEATER_CARBINE_WRAP1",
           "COMPONENT_REPEATER_CARBINE_WRAP2",
           "COMPONENT_REPEATER_CARBINE_WRAP3",
@@ -1514,17 +1520,17 @@ Config.weapon_object_load_for_redner = {
 
     ["WEAPON_REPEATER_HENRY"] = {
 
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_REPEATER_HENRY_GRIP",
           "COMPONENT_REPEATER_HENRY_GRIP_IRONWOOD",
           "COMPONENT_REPEATER_HENRY_GRIP_ENGRAVED",
           "COMPONENT_REPEATER_HENRY_GRIP_BURLED",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_REPEATER_HENRY_SIGHT_NARROW",
           "COMPONENT_REPEATER_HENRY_SIGHT_WIDE",
         },
-        ["WRAP"] = {
+        ["Typ obalu"] = {
           "COMPONENT_REPEATER_HENRY_WRAP1",
           "COMPONENT_REPEATER_HENRY_WRAP2",
           "COMPONENT_REPEATER_HENRY_WRAP3",
@@ -1537,18 +1543,18 @@ Config.weapon_object_load_for_redner = {
 
     ["WEAPON_REPEATER_EVANS"] = {
 
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_REPEATER_EVANS_GRIP",
           "COMPONENT_REPEATER_EVANS_GRIP_IRONWOOD",
           "COMPONENT_REPEATER_EVANS_GRIP_ENGRAVED",
           "COMPONENT_REPEATER_EVANS_GRIP_BURLED",
           "COMPONENT_REPEATER_EVANS_GRIP_WINTER",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_REPEATER_EVANS_SIGHT_NARROW",
           "COMPONENT_REPEATER_EVANS_SIGHT_WIDE",
         },
-        ["WRAP"] = {
+        ["Typ obalu"] = {
           "COMPONENT_REPEATER_EVANS_WRAP",
           "COMPONENT_REPEATER_EVANS_WRAP2",
           "COMPONENT_REPEATER_EVANS_WRAP3",
@@ -1557,27 +1563,27 @@ Config.weapon_object_load_for_redner = {
           -- "COMPONENT_REPEATER_EVANS_WRAP6",
           -- "COMPONENT_REPEATER_EVANS_WRAP_WINTER",
         },
-        -- ["FRAME_ENGRAVING"] = {
-        -- 	"COMPONENT_LONGARM_ROLE_ENGRAVING_EVANS_WINTER",
-        -- },
+        ["Rytiny na rámu"] = {
+        	"COMPONENT_LONGARM_ROLE_ENGRAVING_EVANS_WINTER",
+        },
     },
 
 
 
     ["WEAPON_REPEATER_WINCHESTER"] = {
 
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_REPEATER_WINCHESTER_GRIP",
           "COMPONENT_REPEATER_WINCHESTER_GRIP_IRONWOOD",
           "COMPONENT_REPEATER_WINCHESTER_GRIP_ENGRAVED",
           "COMPONENT_REPEATER_WINCHESTER_GRIP_COLLECTOR",
           "COMPONENT_REPEATER_WINCHESTER_GRIP_BURLED",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_REPEATER_WINCHESTER_SIGHT_NARROW",
           "COMPONENT_REPEATER_WINCHESTER_SIGHT_WIDE",
         },
-        ["WRAP"] = {
+        ["Typ obalu"] = {
           "COMPONENT_REPEATER_WINCHESTER_WRAP1",
           "COMPONENT_REPEATER_WINCHESTER_WRAP2",
           "COMPONENT_REPEATER_WINCHESTER_WRAP3",
@@ -1586,9 +1592,9 @@ Config.weapon_object_load_for_redner = {
           -- "COMPONENT_REPEATER_WINCHESTER_WRAP6",
           -- "COMPONENT_REPEATER_WINCHESTER_WRAP_COLLECTOR",
         },
-        -- ["FRAME_VERTDATA"] = {
-        --   "COMPONENT_LONGARM_FRAME_ENGRAVING_WINCHESTER_COLLECTOR",
-        -- },
+        ["Typ kompletu"] = {
+          "COMPONENT_LONGARM_FRAME_ENGRAVING_WINCHESTER_COLLECTOR",
+        },
     },
 
 
@@ -1596,26 +1602,26 @@ Config.weapon_object_load_for_redner = {
 
     ["WEAPON_RIFLE_VARMINT"] = {
 
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_RIFLE_VARMINT_GRIP",
           "COMPONENT_RIFLE_VARMINT_GRIP_ENGRAVED",
           "COMPONENT_RIFLE_VARMINT_GRIP_IRONWOOD",
           "COMPONENT_RIFLE_VARMINT_GRIP_NATURALIST",
           "COMPONENT_RIFLE_VARMINT_GRIP_BURLED",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_REPEATER_PUMPACTION_SIGHT_NARROW",
           "COMPONENT_REPEATER_PUMPACTION_SIGHT_WIDE",
           "COMPONENT_RIFLE_VARMINT_SIGHT_NATURALIST",
         },
-        ["CLIP"] = {
+        ["Typ zásobníku"] = {
           "COMPONENT_RIFLE_VARMINT_CLIP",
           "COMPONENT_RIFLE_VARMINT_CLIP_ENGRAVED",
           "COMPONENT_RIFLE_VARMINT_CLIP_IRONWOOD",
           "COMPONENT_RIFLE_VARMINT_CLIP_NATURALIST",
           "COMPONENT_RIFLE_VARMINT_CLIP_BURLED",
         },
-        ["WRAP"] = {
+        ["Typ obalu"] = {
           "COMPONENT_RIFLE_VARMINT_WRAP1",
           "COMPONENT_RIFLE_VARMINT_WRAP2",
           "COMPONENT_RIFLE_VARMINT_WRAP3",
@@ -1623,9 +1629,9 @@ Config.weapon_object_load_for_redner = {
           -- "COMPONENT_RIFLE_VARMINT_WRAP5",
           -- "COMPONENT_RIFLE_VARMINT_WRAP6",
         },
-        -- ["FRAME_VERTDATA"] = {
-        --   "COMPONENT_LONGARM_ROLE_ENGRAVING_VARMINT_NATURALIST",
-        -- },
+        ["Typ kompletu"] = {
+          "COMPONENT_LONGARM_ROLE_ENGRAVING_VARMINT_NATURALIST",
+        },
     },
 
 
@@ -1633,18 +1639,18 @@ Config.weapon_object_load_for_redner = {
 
 
     ["WEAPON_RIFLE_BOLTACTION"] = {
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_RIFLE_BOLTACTION_GRIP",
           "COMPONENT_RIFLE_BOLTACTION_GRIP_IRONWOOD",
           "COMPONENT_RIFLE_BOLTACTION_GRIP_ENGRAVED",
           "COMPONENT_RIFLE_BOLTACTION_GRIP_BOUNTY",
           "COMPONENT_RIFLE_BOLTACTION_GRIP_BURLED",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_RIFLE_BOLTACTION_SIGHT_WIDE",
           "COMPONENT_RIFLE_BOLTACTION_SIGHT_NARROW",
         },
-        ["WRAP"] = {
+        ["Typ obalu"] = {
           "COMPONENT_RIFLE_BOLTACTION_WRAP",
           "COMPONENT_RIFLE_BOLTACTION_WRAP2",
           "COMPONENT_RIFLE_BOLTACTION_WRAP3",
@@ -1652,17 +1658,17 @@ Config.weapon_object_load_for_redner = {
           -- "COMPONENT_RIFLE_BOLTACTION_WRAP5",
           -- "COMPONENT_RIFLE_BOLTACTION_WRAP6",
         },
-        -- ["FRAME_VERTDATA"] = {
-        --   "COMPONENT_LONGARM_FRAME_ENGRAVING_BOLTACTION_BOUNTY",
-        -- },
+        ["Typ kompletu"] = {
+          "COMPONENT_LONGARM_FRAME_ENGRAVING_BOLTACTION_BOUNTY",
+        },
     },
 
     ["WEAPON_RIFLE_ELEPHANT"] = {
-    	["BARREL"] = {
+    	["Typ hlavně"] = {
     	  "COMPONENT_RIFLE_ELEPHANT_BARREL_SHORT",
     	  "COMPONENT_RIFLE_ELEPHANT_BARREL_LONG",
     	},
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_RIFLE_ELEPHANT_GRIP",
           "COMPONENT_RIFLE_ELEPHANT_GRIP_IRONWOOD",
           "COMPONENT_RIFLE_ELEPHANT_GRIP_ENGRAVED",
@@ -1674,28 +1680,28 @@ Config.weapon_object_load_for_redner = {
           "COMPONENT_RIFLE_ELEPHANT_MAG_ENGRAVED",
           "COMPONENT_RIFLE_ELEPHANT_MAG_BURLED",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_RIFLE_ELEPHANT_SIGHT_NARROW",
           "COMPONENT_RIFLE_ELEPHANT_SIGHT_WIDE",
         },
-        ["WRAP"] = {
+        ["Typ obalu"] = {
           "COMPONENT_RIFLE_ELEPHANT_WRAP1",
           "COMPONENT_RIFLE_ELEPHANT_WRAP2",
         },
     },
 
     ["WEAPON_RIFLE_SPRINGFIELD"] = {
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_RIFLE_SPRINGFIELD_GRIP",
           "COMPONENT_RIFLE_SPRINGFIELD_GRIP_IRONWOOD",
           "COMPONENT_RIFLE_SPRINGFIELD_GRIP_ENGRAVED",
           "COMPONENT_RIFLE_SPRINGFIELD_GRIP_BURLED",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_RIFLE_SPRINGFIELD_SIGHT_NARROW",
           "COMPONENT_RIFLE_SPRINGFIELD_SIGHT_WIDE",
         },
-        ["WRAP"] = {
+        ["Typ obalu"] = {
           "COMPONENT_RIFLE_SPRINGFIELD_WRAP1",
           "COMPONENT_RIFLE_SPRINGFIELD_WRAP2",
           "COMPONENT_RIFLE_SPRINGFIELD_WRAP3",
@@ -1705,24 +1711,22 @@ Config.weapon_object_load_for_redner = {
         },
     },  
 
-
-
     ["WEAPON_SNIPERRIFLE_CARCANO"] = {
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_RIFLE_CARCANO_GRIP",
           "COMPONENT_RIFLE_CARCANO_GRIP_ENGRAVED",
           "COMPONENT_RIFLE_CARCANO_GRIP_IRONWOOD",
           "COMPONENT_RIFLE_CARCANO_GRIP_BURLED",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_RIFLE_CARCANO_SIGHT_NARROW",
           "COMPONENT_RIFLE_CARCANO_SIGHT_WIDE",
         },
-        ["CLIP"] = {
+        ["Typ zásobníku"] = {
           "COMPONENT_RIFLE_CARCANO_CLIP",
           "COMPONENT_RIFLE_CARCANO_CLIP_EMPTY",
         },
-        ["WRAP"] = {
+        ["Typ obalu"] = {
           "COMPONENT_RIFLE_CARCANO_WRAP1",
           "COMPONENT_RIFLE_CARCANO_WRAP2",
           "COMPONENT_RIFLE_CARCANO_WRAP3",
@@ -1732,11 +1736,8 @@ Config.weapon_object_load_for_redner = {
         },
     },  
 
-
-
-
     ["WEAPON_SNIPERRIFLE_ROLLINGBLOCK"] = {
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_SNIPERRIFLE_ROLLINGBLOCK_GRIP",
           "COMPONENT_SNIPERRIFLE_ROLLINGBLOCK_GRIP_EXOTIC",
           "COMPONENT_SNIPERRIFLE_ROLLINGBLOCK_GRIP_IRONWOOD",
@@ -1744,11 +1745,11 @@ Config.weapon_object_load_for_redner = {
           "COMPONENT_SNIPERRIFLE_ROLLINGBLOCK_GRIP_REAPER",
           "COMPONENT_SNIPERRIFLE_ROLLINGBLOCK_GRIP_BURLED",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_RIFLE_ROLLINGBLOCK_SIGHT_NARROW",
           "COMPONENT_RIFLE_ROLLINGBLOCK_SIGHT_WIDE",
         },
-        ["WRAP"] = {
+        ["Typ obalu"] = {
           "COMPONENT_RIFLE_ROLLINGBLOCK_WRAP1",
           "COMPONENT_RIFLE_ROLLINGBLOCK_WRAP2",
           "COMPONENT_RIFLE_ROLLINGBLOCK_WRAP3",
@@ -1756,29 +1757,27 @@ Config.weapon_object_load_for_redner = {
           -- "COMPONENT_RIFLE_ROLLINGBLOCK_WRAP5",
           -- "COMPONENT_RIFLE_ROLLINGBLOCK_WRAP6",
         },
-        -- ["FRAME_VERTDATA"] = {
-        --   "COMPONENT_LONGARM_ROLE_ENGRAVING_ROLLINGBLOCK_REAPER",
-        -- },
+        ["Typ kompletu"] = {
+          "COMPONENT_LONGARM_ROLE_ENGRAVING_ROLLINGBLOCK_REAPER",
+        },
     },
 
-
-
     ["WEAPON_SHOTGUN_REPEATING"] = {
-        ["BARREL"] = {
+        ["Typ hlavně"] = {
           "COMPONENT_SHOTGUN_REPEATING_BARREL_SHORT",
           "COMPONENT_SHOTGUN_REPEATING_BARREL_LONG",
         }, 
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_SHOTGUN_REPEATING01_GRIP",
           "COMPONENT_SHOTGUN_REPEATING01_GRIP_IRONWOOD",
           "COMPONENT_SHOTGUN_REPEATING01_GRIP_ENGRAVED",
           "COMPONENT_SHOTGUN_REPEATING_GRIP_BURLED",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_SHOTGUN_REPEATING_SIGHT_NARROW",
           "COMPONENT_SHOTGUN_REPEATING_SIGHT_WIDE",
         },
-        ["WRAP"] = {
+        ["Typ obalu"] = {
           "COMPONENT_SHOTGUN_REPEATING01_WRAP1",
           "COMPONENT_SHOTGUN_REPEATING01_WRAP2",
           "COMPONENT_SHOTGUN_REPEATING_WRAP3",
@@ -1788,14 +1787,13 @@ Config.weapon_object_load_for_redner = {
         },
     },  
 
-
     ["WEAPON_SHOTGUN_PUMP"] = {
-        ["BARREL"] = {
+        ["Typ hlavně"] = {
           "COMPONENT_SHOTGUN_PUMP_BARREL_SHORT",
           "COMPONENT_SHOTGUN_PUMP_BARREL_LONG",
           "COMPONENT_SHOTGUN_PUMP_BARREL_HALLOWEEN",
         }, 
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_SHOTGUN_PUMP_GRIP",
           "COMPONENT_SHOTGUN_PUMP_GRIP_IRONWOOD",
           "COMPONENT_SHOTGUN_PUMP_GRIP_ENGRAVED",
@@ -1803,11 +1801,11 @@ Config.weapon_object_load_for_redner = {
           "COMPONENT_SHOTGUN_PUMP_GRIP_BURLED",
           "COMPONENT_SHOTGUN_PUMP_GRIP_HALLOWEEN",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_SHOTGUN_PUMP_SIGHT_NARROW",
           "COMPONENT_SHOTGUN_PUMP_SIGHT_WIDE",
         },
-        ["CLIP"] = {
+        ["Typ zásobníku"] = {
           "COMPONENT_SHOTGUN_PUMP_CLIP",
           "COMPONENT_SHOTGUN_PUMP_CLIP_IRONWOOD",
           "COMPONENT_SHOTGUN_PUMP_CLIP_ENGRAVED",
@@ -1815,7 +1813,7 @@ Config.weapon_object_load_for_redner = {
           "COMPONENT_SHOTGUN_PUMP_CLIP_BURLED",
           "COMPONENT_SHOTGUN_PUMP_CLIP_HALLOWEEN",
         },
-        ["WRAP"] = {
+        ["Typ obalu"] = {
           "COMPONENT_SHOTGUN_PUMP_WRAP1",
           "COMPONENT_SHOTGUN_PUMP_WRAP2",
           "COMPONENT_SHOTGUN_PUMP_WRAP3",
@@ -1823,20 +1821,19 @@ Config.weapon_object_load_for_redner = {
           -- "COMPONENT_SHOTGUN_PUMP_WRAP5",
           -- "COMPONENT_SHOTGUN_PUMP_WRAP6",
         },
-        -- ["FRAME_VERTDATA"] = {
-        --   "COMPONENT_SHOTGUN_FRAME_ENGRAVING_PUMP_TRADER",
-        --   "COMPONENT_LONGARM_ROLE_ENGRAVING_PUMP_HALLOWEEN",
-        -- },
+        ["Typ kompletu"] = {
+          "COMPONENT_SHOTGUN_FRAME_ENGRAVING_PUMP_TRADER",
+          "COMPONENT_LONGARM_ROLE_ENGRAVING_PUMP_HALLOWEEN",
+        },
     },      
 
-
     ["WEAPON_SHOTGUN_DOUBLEBARREL"] = {
-        ["BARREL"] = {
+        ["Typ hlavně"] = {
           "COMPONENT_SHOTGUN_DOUBLEBARREL_BARREL_SHORT",
           "COMPONENT_SHOTGUN_DOUBLEBARREL_BARREL_LONG",
           "COMPONENT_SHOTGUN_DOUBLEBARREL_BARREL_KRAMPUS",
         }, 
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_SHOTGUN_DOUBLEBARREL_GRIP",
           "COMPONENT_SHOTGUN_DOUBLEBARREL_GRIP_EXOTIC",
           "COMPONENT_SHOTGUN_DOUBLEBARREL_GRIP_IRONWOOD",
@@ -1844,11 +1841,11 @@ Config.weapon_object_load_for_redner = {
           "COMPONENT_SHOTGUN_DOUBLEBARREL_GRIP_KRAMPUS",
           "COMPONENT_SHOTGUN_DOUBLEBARREL_GRIP_BURLED",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_SHOTGUN_DOUBLEBARREL_SIGHT_NARROW",
           "COMPONENT_SHOTGUN_DOUBLEBARREL_SIGHT_WIDE",
         },
-        ["WRAP"] = {
+        ["Typ obalu"] = {
           "COMPONENT_SHOTGUN_DOUBLEBARREL_WRAP1",
           "COMPONENT_SHOTGUN_DOUBLEBARREL_WRAP2",
           "COMPONENT_SHOTGUN_DOUBLEBARREL_WRAP3",
@@ -1864,27 +1861,25 @@ Config.weapon_object_load_for_redner = {
           "COMPONENT_SHOTGUN_DOUBLEBARREL_MAG_KRAMPUS",
           "COMPONENT_SHOTGUN_DOUBLEBARREL_MAG_BURLED",
         },
-        -- ["FRAME_VERTDATA"] = {
+        -- ["Typ kompletu"] = {
         --   "COMPONENT_LONGARM_ROLE_ENGRAVING_DOUBLEBARREL_KRAMPUS",
         -- },
     },
 
-
-
     ["WEAPON_SHOTGUN_SAWEDOFF"] = {
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_SHOTGUN_SAWEDOFF_GRIP",
           "COMPONENT_SHOTGUN_SAWEDOFF_GRIP_IRONWOOD",
           "COMPONENT_SHOTGUN_SAWEDOFF_GRIP_EBONY",
           "COMPONENT_SHOTGUN_SAWEDOFF_GRIP_MOONSHINER",
           "COMPONENT_SHOTGUN_SAWEDOFF_GRIP_BURLED",
         },
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_SHOTGUN_SAWED_SIGHT_NARROW",
           "COMPONENT_SHOTGUN_SAWED_SIGHT_WIDE",
           "COMPONENT_SHOTGUN_SAWED_SIGHT_MOONSHINER",
         }, 
-        ["WRAP"] = {
+        ["Typ obalu"] = {
           "COMPONENT_SHOTGUN_SAWEDOFF_WRAP1",
           "COMPONENT_SHOTGUN_SAWEDOFF_WRAP2",
           "COMPONENT_SHOTGUN_SAWEDOFF_WRAP3",
@@ -1898,27 +1893,27 @@ Config.weapon_object_load_for_redner = {
           "COMPONENT_SHOTGUN_SAWEDOFF_STOCK_MOONSHINER",
           "COMPONENT_SHOTGUN_SAWEDOFF_STOCK_BURLED",
         },
-        -- ["FRAME_VERTDATA"] = {
-        --   "COMPONENT_LONGARM_ROLE_ENGRAVING_SAWEDOFF_MOONSHINER",
-        -- },
-    },  
+        ["Typ kompletu"] = {
+          "COMPONENT_LONGARM_ROLE_ENGRAVING_SAWEDOFF_MOONSHINER",
+        },
+    },
 
     ["WEAPON_SHOTGUN_SEMIAUTO"] = {
-        ["BARREL"] = {
+        ["Typ hlavně"] = {
           "COMPONENT_SHOTGUN_SEMIAUTO_BARREL_SHORT",
           "COMPONENT_SHOTGUN_SEMIAUTO_BARREL_LONG",
         },
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_SHOTGUN_SEMIAUTO_GRIP",
           "COMPONENT_SHOTGUN_SEMIAUTO_GRIP_IRONWOOD",
           "COMPONENT_SHOTGUN_SEMIAUTO_GRIP_ENGRAVED",
           "COMPONENT_SHOTGUN_SEMIAUTO_GRIP_BURLED",
         }, 
-        ["SIGHT"] = {
+        ["Typ hledí"] = {
           "COMPONENT_SHOTGUN_SEMIAUTO_SIGHT_NARROW",
           "COMPONENT_SHOTGUN_SEMIAUTO_SIGHT_WIDE",
         },
-        ["WRAP"] = {
+        ["Typ obalu"] = {
           "COMPONENT_SHOTGUN_SEMIAUTO_WRAP1",
           "COMPONENT_SHOTGUN_SEMIAUTO_WRAP2",
           "COMPONENT_SHOTGUN_SEMIAUTO_WRAP3",
@@ -1928,16 +1923,15 @@ Config.weapon_object_load_for_redner = {
         },
     },
 
-
     ["WEAPON_BOW_IMPROVED"] = {
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_BOW_IMPROVED_GRIP",
           "COMPONENT_BOW_IMPROVED_GRIP_ALLIGATOR",
           "COMPONENT_BOW_IMPROVED_GRIP_HORNED",
           "COMPONENT_BOW_IMPROVED_GRIP_JAGUAR",
           "COMPONENT_BOW_IMPROVED_GRIP_WOODEN_INLAY",
         },
-        ["CYLINDER_TINT"] = {   -- FRAME WOOD COLOR
+        ["Barva dřeva"] = {   -- FRAME WOOD COLOR
           "COMPONENT_BOW_FRAME_TINT_A_1",
           "COMPONENT_BOW_FRAME_TINT_A_2",
           "COMPONENT_BOW_FRAME_TINT_A_3",
@@ -1947,7 +1941,7 @@ Config.weapon_object_load_for_redner = {
           "COMPONENT_BOW_FRAME_TINT_A_7",
           "COMPONENT_BOW_FRAME_TINT_A_8",
         },
-        ["BARREL_TINT"] = {   -- GRIP LEATHER COLOR
+        ["Barva kůže"] = {   -- GRIP LEATHER COLOR
           "COMPONENT_BOW_GRIPSTOCK_TINT_A_1",
           "COMPONENT_BOW_GRIPSTOCK_TINT_A_2",
           "COMPONENT_BOW_GRIPSTOCK_TINT_A_3",
@@ -1957,7 +1951,7 @@ Config.weapon_object_load_for_redner = {
           "COMPONENT_BOW_GRIPSTOCK_TINT_A_7",
           "COMPONENT_BOW_GRIPSTOCK_TINT_A_8",
         },
-        ["TRIGGER_TINT"] = {  -- STRING COLOR
+        ["Barva šňůry"] = {  -- STRING COLOR
           "COMPONENT_BOW_TRIGGER_TINT_A_1",
           "COMPONENT_BOW_TRIGGER_TINT_A_2",
           "COMPONENT_BOW_TRIGGER_TINT_A_3",
@@ -1967,7 +1961,7 @@ Config.weapon_object_load_for_redner = {
           "COMPONENT_BOW_TRIGGER_TINT_A_7",
           "COMPONENT_BOW_TRIGGER_TINT_A_8",
         },
-        ["FRAME_VERTDATA"] = {
+        ["Typ kompletu"] = {
           "COMPONENT_BOW_ROLE_ENGRAVING_IMPROVED_ALLIGATOR",
           "COMPONENT_BOW_ROLE_ENGRAVING_IMPROVED_HORNED",
           "COMPONENT_BOW_ROLE_ENGRAVING_IMPROVED_JAGUAR",
@@ -1976,11 +1970,10 @@ Config.weapon_object_load_for_redner = {
     },
 
     ["WEAPON_MELEE_KNIFE"] = {
-        ["GRIP"] = {
+        ["Typ rukojeti"] = {
           "COMPONENT_MELEE_KNIFE02_GRIP",
           "COMPONENT_MELEE_KNIFE13_GRIP",
-        }, 
-
+        },
     },
 
     ["WEAPON_THROWN_DYNAMITE"] = {
@@ -1996,17 +1989,15 @@ Config.weapon_object_load_for_redner = {
     },
 
     ["WEAPON_FISHINGROD"] = {
-        ["COMPONENT_FISHING_LINE"] = {
+        ["Vlasec se splávek"] = {
           "COMPONENT_FISHING_LINE",
         }, 
     },
 }
 
-
 Config.shared_components = {
     ["SHORTARM"] = {
-     
-        ["TRIGGER_MATERIAL"] = {
+        ["Materiál spouště"] = {
           "COMPONENT_SHORTARM_TRIGGER_MATERIAL_1",
           "COMPONENT_SHORTARM_TRIGGER_MATERIAL_2",
           "COMPONENT_SHORTARM_TRIGGER_MATERIAL_3",
@@ -2018,7 +2009,7 @@ Config.shared_components = {
           "COMPONENT_SHORTARM_TRIGGER_MATERIAL_9",
           "COMPONENT_SHORTARM_TRIGGER_MATERIAL_10",
         },  
-        ["SIGHT_MATERIAL"] = {
+        ["Materiál hledí"] = {
           "COMPONENT_SHORTARM_SIGHT_MATERIAL_1",
           "COMPONENT_SHORTARM_SIGHT_MATERIAL_2",
           "COMPONENT_SHORTARM_SIGHT_MATERIAL_3",
@@ -2031,7 +2022,7 @@ Config.shared_components = {
           "COMPONENT_SHORTARM_SIGHT_MATERIAL_10",
         },         
 
-        ["HAMMER_MATERIAL"] = {
+        ["Materiál kohoutu"] = {
           "COMPONENT_SHORTARM_HAMMER_MATERIAL_1",
           "COMPONENT_SHORTARM_HAMMER_MATERIAL_2",
           "COMPONENT_SHORTARM_HAMMER_MATERIAL_3",
@@ -2044,7 +2035,7 @@ Config.shared_components = {
           "COMPONENT_SHORTARM_HAMMER_MATERIAL_10",
         },  
 
-        ["FRAME_MATERIAL"] = {
+        ["Materiál rámu"] = {
           "COMPONENT_SHORTARM_FRAME_MATERIAL_1",
           "COMPONENT_SHORTARM_FRAME_MATERIAL_2",
           "COMPONENT_SHORTARM_FRAME_MATERIAL_3",
@@ -2057,14 +2048,14 @@ Config.shared_components = {
           "COMPONENT_SHORTARM_FRAME_MATERIAL_10",
         },  
 
-        ["FRAME_ENGRAVING"] = {
+        ["Rytiny na rámu"] = {
           "COMPONENT_SHORTARM_FRAME_ENGRAVING_1",
           "COMPONENT_SHORTARM_FRAME_ENGRAVING_2",
           "COMPONENT_SHORTARM_FRAME_ENGRAVING_3",
           "COMPONENT_SHORTARM_FRAME_ENGRAVING_4",
         }, 
 
-        ["FRAME_ENGRAVING_MATERIAL"] = {
+        ["Barva rytin na rámu"] = {
           "COMPONENT_SHORTARM_FRAME_ENGRAVING_MATERIAL_1",
           "COMPONENT_SHORTARM_FRAME_ENGRAVING_MATERIAL_2",
           "COMPONENT_SHORTARM_FRAME_ENGRAVING_MATERIAL_3",
@@ -2081,7 +2072,7 @@ Config.shared_components = {
           "COMPONENT_SHORTARM_FRAME_ENGRAVING_MATERIAL_14",
         },
 
-        ["BARREL_MATERIAL"] = {
+        ["Materiál hlavně"] = {
           "COMPONENT_SHORTARM_BARREL_MATERIAL_1",
           "COMPONENT_SHORTARM_BARREL_MATERIAL_2",
           "COMPONENT_SHORTARM_BARREL_MATERIAL_3",
@@ -2094,14 +2085,14 @@ Config.shared_components = {
           "COMPONENT_SHORTARM_BARREL_MATERIAL_10",
         }, 
 
-        ["BARREL_ENGRAVING"] = {
+        ["Rytiny na hlavni"] = {
           "COMPONENT_SHORTARM_BARREL_ENGRAVING_1",
           "COMPONENT_SHORTARM_BARREL_ENGRAVING_2",
           "COMPONENT_SHORTARM_BARREL_ENGRAVING_3",
           "COMPONENT_SHORTARM_BARREL_ENGRAVING_4",
         },
 
-        ["BARREL_ENGRAVING_MATERIAL"] = {
+        ["Barva rytin na hlavni"] = {
           "COMPONENT_SHORTARM_BARREL_ENGRAVING_MATERIAL_1",
           "COMPONENT_SHORTARM_BARREL_ENGRAVING_MATERIAL_2",
           "COMPONENT_SHORTARM_BARREL_ENGRAVING_MATERIAL_3",
@@ -2118,7 +2109,7 @@ Config.shared_components = {
           "COMPONENT_SHORTARM_BARREL_ENGRAVING_MATERIAL_14",
         },
 
-        ["CYLINDER_MATERIAL"] = {
+        ["Materiál válce"] = {
           "COMPONENT_SHORTARM_CYLINDER_MATERIAL_1",
           "COMPONENT_SHORTARM_CYLINDER_MATERIAL_2",
           "COMPONENT_SHORTARM_CYLINDER_MATERIAL_3",
@@ -2131,14 +2122,14 @@ Config.shared_components = {
           "COMPONENT_SHORTARM_CYLINDER_MATERIAL_10",
         },  
 
-        ["CYLINDER_ENGRAVING"] = {
+        ["Rytiny na válci"] = {
           "COMPONENT_SHORTARM_CYLINDER_ENGRAVING_1",
           "COMPONENT_SHORTARM_CYLINDER_ENGRAVING_2",
           "COMPONENT_SHORTARM_CYLINDER_ENGRAVING_3",
           "COMPONENT_SHORTARM_CYLINDER_ENGRAVING_4",
         }, 
 
-        ["CYLINDER_ENGRAVING_MATERIAL"] = {
+        ["Barva rytin na válci"] = {
           "COMPONENT_SHORTARM_CYLINDER_ENGRAVING_MATERIAL_7",
           "COMPONENT_SHORTARM_CYLINDER_ENGRAVING_MATERIAL_8",
           "COMPONENT_SHORTARM_CYLINDER_ENGRAVING_MATERIAL_5",
@@ -2155,12 +2146,12 @@ Config.shared_components = {
           "COMPONENT_SHORTARM_CYLINDER_ENGRAVING_MATERIAL_14",
         },        
 
-        ["GRIP_MATERIAL"] = {
+        ["Materiál rukojeti"] = {
           "COMPONENT_SHORTARM_GRIP_MATERIAL_PEARL",
           "COMPONENT_SHORTARM_GRIP_MATERIAL_BURLED",
         },
 
-        ["GRIPSTOCK_ENGRAVING"] = {
+        ["Rytiny na rukojeti"] = {
           "COMPONENT_SHORTARM_GRIPSTOCK_ENGRAVING_1",
           "COMPONENT_SHORTARM_GRIPSTOCK_ENGRAVING_2",
           "COMPONENT_SHORTARM_GRIPSTOCK_ENGRAVING_3",
@@ -2192,7 +2183,7 @@ Config.shared_components = {
         --   "COMPONENT_SHORTARM_GRIPSTOCK_TINT_BURLED",
         -- },  
 
-        ["BARREL_RIFLING"] = {
+        ["Vybroušení hlavně"] = {
           "COMPONENT_SHORTARM_BARREL_RIFLING_1",
         },  
 
@@ -2203,7 +2194,7 @@ Config.shared_components = {
 
     ["LONGARM"] = {
 
-      ["TRIGGER_MATERIAL"] = {
+      ["Materiál spouště"] = {
         "COMPONENT_LONGARM_TRIGGER_MATERIAL_1",
         "COMPONENT_LONGARM_TRIGGER_MATERIAL_2",
         "COMPONENT_LONGARM_TRIGGER_MATERIAL_3",
@@ -2215,7 +2206,7 @@ Config.shared_components = {
         "COMPONENT_LONGARM_TRIGGER_MATERIAL_9",
         "COMPONENT_LONGARM_TRIGGER_MATERIAL_10",
       }, 
-      ["SIGHT_MATERIAL"] = {
+      ["Materiál hledí"] = {
         "COMPONENT_LONGARM_SIGHT_MATERIAL_1",
         "COMPONENT_LONGARM_SIGHT_MATERIAL_2",
         "COMPONENT_LONGARM_SIGHT_MATERIAL_3",
@@ -2227,7 +2218,7 @@ Config.shared_components = {
         "COMPONENT_LONGARM_SIGHT_MATERIAL_9",
         "COMPONENT_LONGARM_SIGHT_MATERIAL_10",
       },
-       ["HAMMER_MATERIAL"] = {
+       ["Materiál kohoutu"] = {
         "COMPONENT_LONGARM_HAMMER_MATERIAL_4",
         "COMPONENT_LONGARM_HAMMER_MATERIAL_8",
         "COMPONENT_LONGARM_HAMMER_MATERIAL_5",
@@ -2240,7 +2231,7 @@ Config.shared_components = {
         "COMPONENT_LONGARM_HAMMER_MATERIAL_10",
       },
 
-      ["BARREL_MATERIAL"] = {
+      ["Materiál hlavně"] = {
         "COMPONENT_LONGARM_BARREL_MATERIAL_1",
         "COMPONENT_LONGARM_BARREL_MATERIAL_2",
         "COMPONENT_LONGARM_BARREL_MATERIAL_3",
@@ -2252,13 +2243,13 @@ Config.shared_components = {
         "COMPONENT_LONGARM_BARREL_MATERIAL_9",
         "COMPONENT_LONGARM_BARREL_MATERIAL_10",
       },
-      ["BARREL_ENGRAVING"] = {
+      ["Rytiny na hlavni"] = {
         "COMPONENT_LONGARM_BARREL_ENGRAVING_1",
         "COMPONENT_LONGARM_BARREL_ENGRAVING_3",
         "COMPONENT_LONGARM_BARREL_ENGRAVING_2",
         "COMPONENT_LONGARM_BARREL_ENGRAVING_4",
       }, 
-      ["BARREL_ENGRAVING_MATERIAL"] = {
+      ["Barva rytin na hlavni"] = {
         "COMPONENT_LONGARM_BARREL_ENGRAVING_MATERIAL_1",
         "COMPONENT_LONGARM_BARREL_ENGRAVING_MATERIAL_2",
         "COMPONENT_LONGARM_BARREL_ENGRAVING_MATERIAL_3",
@@ -2275,7 +2266,7 @@ Config.shared_components = {
         "COMPONENT_LONGARM_BARREL_ENGRAVING_MATERIAL_14",
       },
 
-      ["CYLINDER_MATERIAL"] = {
+      ["Materiál válce"] = {
         "COMPONENT_LONGARM_CYLINDER_MATERIAL_1",
         "COMPONENT_LONGARM_CYLINDER_MATERIAL_2",
         "COMPONENT_LONGARM_CYLINDER_MATERIAL_3",
@@ -2288,13 +2279,13 @@ Config.shared_components = {
         "COMPONENT_LONGARM_CYLINDER_MATERIAL_10",
       }, 
 
-      ["CYLINDER_ENGRAVING"] = {
+      ["Rytiny na válci"] = {
         "COMPONENT_LONGARM_CYLINDER_ENGRAVING_1",
         "COMPONENT_LONGARM_CYLINDER_ENGRAVING_2",
         "COMPONENT_LONGARM_CYLINDER_ENGRAVING_3",
         "COMPONENT_LONGARM_CYLINDER_ENGRAVING_4",
       },  
-      ["CYLINDER_ENGRAVING_MATERIAL"] = {
+      ["Barva rytin na válci"] = {
         "COMPONENT_LONGARM_CYLINDER_ENGRAVING_MATERIAL_1",
         "COMPONENT_LONGARM_CYLINDER_ENGRAVING_MATERIAL_2",
         "COMPONENT_LONGARM_CYLINDER_ENGRAVING_MATERIAL_3",
@@ -2311,7 +2302,7 @@ Config.shared_components = {
         "COMPONENT_LONGARM_CYLINDER_ENGRAVING_MATERIAL_14",
       }, 
 
-      ["FRAME_MATERIAL"] = {
+      ["Materiál rámu"] = {
         "COMPONENT_LONGARM_FRAME_MATERIAL_1",
         "COMPONENT_LONGARM_FRAME_MATERIAL_2",
         "COMPONENT_LONGARM_FRAME_MATERIAL_3",
@@ -2324,14 +2315,14 @@ Config.shared_components = {
         "COMPONENT_LONGARM_FRAME_MATERIAL_10",
       }, 
 
-      ["FRAME_ENGRAVING"] = {
+      ["Rytiny na rámu"] = {
         "COMPONENT_LONGARM_FRAME_ENGRAVING_1",
         "COMPONENT_LONGARM_FRAME_ENGRAVING_2",
         "COMPONENT_LONGARM_FRAME_ENGRAVING_3",
         "COMPONENT_LONGARM_FRAME_ENGRAVING_4",
       }, 
 
-      ["FRAME_ENGRAVING_MATERIAL"] = {
+      ["Barva rytin na rámu"] = {
         "COMPONENT_LONGARM_FRAME_ENGRAVING_MATERIAL_1",
         "COMPONENT_LONGARM_FRAME_ENGRAVING_MATERIAL_2",
         "COMPONENT_LONGARM_FRAME_ENGRAVING_MATERIAL_3",
@@ -2348,7 +2339,7 @@ Config.shared_components = {
         "COMPONENT_LONGARM_FRAME_ENGRAVING_MATERIAL_14",
       }, 
 
-      ["GRIP_MATERIAL"] = {
+      ["Materiál rukojeti"] = {
         "COMPONENT_LONGARM_GRIP_MATERIAL_BURLED",
       }, 
 
@@ -2375,7 +2366,7 @@ Config.shared_components = {
       --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_BURLED",
       -- }, 
 
-       ["GRIPSTOCK_ENGRAVING"] = {
+       ["Rytiny na rukojeti"] = {
         "COMPONENT_LONGARM_GRIPSTOCK_ENGRAVING_1",
         "COMPONENT_LONGARM_GRIPSTOCK_ENGRAVING_2",
         "COMPONENT_LONGARM_GRIPSTOCK_ENGRAVING_3",
@@ -2385,12 +2376,12 @@ Config.shared_components = {
       }, 
 
 
-      ["WRAP_MATERIAL"] = {
+      ["Materiál obalu"] = {
         "COMPONENT_LONGARM_WRAP_MATERIAL_LEATHER",
         "COMPONENT_LONGARM_WRAP_MATERIAL_CLOTH",
       },  
 
-      ["WRAP_TINT"] = {
+      ["Barva obalu"] = {
         "COMPONENT_LONGARM_WRAP_TINT_WHITE",
         "COMPONENT_LONGARM_WRAP_TINT_BLACK",
         "COMPONENT_LONGARM_WRAP_TINT_A_1",
@@ -2456,13 +2447,13 @@ Config.shared_components = {
         "COMPONENT_LONGARM_WRAP_TINT_E_10",
       },
 
-      ["STRAP"] = {
+      ["Popruh"] = {
         "COMPONENT_REPEATER_STRAP01",
         "COMPONENT_RIFLE_CS_STRAP01",
         "COMPONENT_REPEATER_CLOTH_STRAP01",
         "COMPONENT_LEFTSHOULDER_STRAP01",
       },          
-      ["STRAP_TINT"] = {
+      ["Barva popruhu"] = {
         "COMPONENT_LONGARM_STRAP_TINT_A_1",
         "COMPONENT_LONGARM_STRAP_TINT_A_2",
         "COMPONENT_LONGARM_STRAP_TINT_A_3",
@@ -2473,11 +2464,11 @@ Config.shared_components = {
         "COMPONENT_LONGARM_STRAP_TINT_A_8",
       }, 
 
-        ["BARREL_RIFLING"] = {
+        ["Vybroušení hlavně"] = {
           "COMPONENT_LONGARM_BARREL_RIFLING_1",
         }, 
 
-    	["SCOPE"] = {
+    	["Zaměřovač"] = {
           "COMPONENT_RIFLE_SCOPE02",
           -- "COMPONENT_RIFLE_SCOPE03",
           -- "COMPONENT_RIFLE_SCOPE04",
@@ -2487,7 +2478,7 @@ Config.shared_components = {
 
 
     ["SHOTGUN"] = {
-      ["TRIGGER_MATERIAL"] = {
+      ["Materiál spouště"] = {
         "COMPONENT_LONGARM_TRIGGER_MATERIAL_1",
         "COMPONENT_LONGARM_TRIGGER_MATERIAL_2",
         "COMPONENT_LONGARM_TRIGGER_MATERIAL_3",
@@ -2498,8 +2489,8 @@ Config.shared_components = {
         "COMPONENT_LONGARM_TRIGGER_MATERIAL_8",
         "COMPONENT_LONGARM_TRIGGER_MATERIAL_9",
         "COMPONENT_LONGARM_TRIGGER_MATERIAL_10",
-      }, 
-      ["SIGHT_MATERIAL"] = {
+      },
+      ["Materiál hledí"] = {
         "COMPONENT_LONGARM_SIGHT_MATERIAL_1",
         "COMPONENT_LONGARM_SIGHT_MATERIAL_2",
         "COMPONENT_LONGARM_SIGHT_MATERIAL_3",
@@ -2511,7 +2502,7 @@ Config.shared_components = {
         "COMPONENT_LONGARM_SIGHT_MATERIAL_9",
         "COMPONENT_LONGARM_SIGHT_MATERIAL_10",
       },
-       ["HAMMER_MATERIAL"] = {
+       ["Materiál kohoutu"] = {
         "COMPONENT_LONGARM_HAMMER_MATERIAL_4",
         "COMPONENT_LONGARM_HAMMER_MATERIAL_8",
         "COMPONENT_LONGARM_HAMMER_MATERIAL_5",
@@ -2524,7 +2515,7 @@ Config.shared_components = {
         "COMPONENT_LONGARM_HAMMER_MATERIAL_10",
       },
 
-      ["BARREL_MATERIAL"] = {
+      ["Materiál hlavně"] = {
         "COMPONENT_LONGARM_BARREL_MATERIAL_1",
         "COMPONENT_LONGARM_BARREL_MATERIAL_2",
         "COMPONENT_LONGARM_BARREL_MATERIAL_3",
@@ -2536,13 +2527,13 @@ Config.shared_components = {
         "COMPONENT_LONGARM_BARREL_MATERIAL_9",
         "COMPONENT_LONGARM_BARREL_MATERIAL_10",
       },
-      ["BARREL_ENGRAVING"] = {
+      ["Rytiny na hlavni"] = {
         "COMPONENT_LONGARM_BARREL_ENGRAVING_1",
         "COMPONENT_LONGARM_BARREL_ENGRAVING_3",
         "COMPONENT_LONGARM_BARREL_ENGRAVING_2",
         "COMPONENT_LONGARM_BARREL_ENGRAVING_4",
       }, 
-      ["BARREL_ENGRAVING_MATERIAL"] = {
+      ["Barva rytin na hlavni"] = {
         "COMPONENT_LONGARM_BARREL_ENGRAVING_MATERIAL_1",
         "COMPONENT_LONGARM_BARREL_ENGRAVING_MATERIAL_2",
         "COMPONENT_LONGARM_BARREL_ENGRAVING_MATERIAL_3",
@@ -2559,7 +2550,7 @@ Config.shared_components = {
         "COMPONENT_LONGARM_BARREL_ENGRAVING_MATERIAL_14",
       },
 
-      ["CYLINDER_MATERIAL"] = {
+      ["Materiál válce"] = {
         "COMPONENT_LONGARM_CYLINDER_MATERIAL_1",
         "COMPONENT_LONGARM_CYLINDER_MATERIAL_2",
         "COMPONENT_LONGARM_CYLINDER_MATERIAL_3",
@@ -2572,13 +2563,13 @@ Config.shared_components = {
         "COMPONENT_LONGARM_CYLINDER_MATERIAL_10",
       }, 
 
-      ["CYLINDER_ENGRAVING"] = {
+      ["Rytiny na válci"] = {
         "COMPONENT_LONGARM_CYLINDER_ENGRAVING_1",
         "COMPONENT_LONGARM_CYLINDER_ENGRAVING_2",
         "COMPONENT_LONGARM_CYLINDER_ENGRAVING_3",
         "COMPONENT_LONGARM_CYLINDER_ENGRAVING_4",
       },  
-      ["CYLINDER_ENGRAVING_MATERIAL"] = {
+      ["Barva rytin na válci"] = {
         "COMPONENT_LONGARM_CYLINDER_ENGRAVING_MATERIAL_1",
         "COMPONENT_LONGARM_CYLINDER_ENGRAVING_MATERIAL_2",
         "COMPONENT_LONGARM_CYLINDER_ENGRAVING_MATERIAL_3",
@@ -2595,7 +2586,7 @@ Config.shared_components = {
         "COMPONENT_LONGARM_CYLINDER_ENGRAVING_MATERIAL_14",
       }, 
 
-      ["FRAME_MATERIAL"] = {
+      ["Materiál rámu"] = {
         "COMPONENT_LONGARM_FRAME_MATERIAL_1",
         "COMPONENT_LONGARM_FRAME_MATERIAL_2",
         "COMPONENT_LONGARM_FRAME_MATERIAL_3",
@@ -2608,14 +2599,14 @@ Config.shared_components = {
         "COMPONENT_LONGARM_FRAME_MATERIAL_10",
       }, 
 
-      ["FRAME_ENGRAVING"] = {
+      ["Rytiny na rámu"] = {
         "COMPONENT_LONGARM_FRAME_ENGRAVING_1",
         "COMPONENT_LONGARM_FRAME_ENGRAVING_2",
         "COMPONENT_LONGARM_FRAME_ENGRAVING_3",
         "COMPONENT_LONGARM_FRAME_ENGRAVING_4",
       }, 
 
-      ["FRAME_ENGRAVING_MATERIAL"] = {
+      ["Barva rytin na rámu"] = {
         "COMPONENT_LONGARM_FRAME_ENGRAVING_MATERIAL_1",
         "COMPONENT_LONGARM_FRAME_ENGRAVING_MATERIAL_2",
         "COMPONENT_LONGARM_FRAME_ENGRAVING_MATERIAL_3",
@@ -2632,7 +2623,7 @@ Config.shared_components = {
         "COMPONENT_LONGARM_FRAME_ENGRAVING_MATERIAL_14",
       }, 
 
-      ["GRIP_MATERIAL"] = {
+      ["Materiál rukojeti"] = {
         "COMPONENT_LONGARM_GRIP_MATERIAL_BURLED",
       }, 
 
@@ -2659,7 +2650,7 @@ Config.shared_components = {
       --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_BURLED",
       -- }, 
 
-       ["GRIPSTOCK_ENGRAVING"] = {
+       ["Rytiny na rukojeti"] = {
         "COMPONENT_LONGARM_GRIPSTOCK_ENGRAVING_1",
         "COMPONENT_LONGARM_GRIPSTOCK_ENGRAVING_2",
         "COMPONENT_LONGARM_GRIPSTOCK_ENGRAVING_3",
@@ -2669,12 +2660,12 @@ Config.shared_components = {
       }, 
 
 
-      ["WRAP_MATERIAL"] = {
+      ["Materiál obalu"] = {
         "COMPONENT_LONGARM_WRAP_MATERIAL_LEATHER",
         "COMPONENT_LONGARM_WRAP_MATERIAL_CLOTH",
       },  
 
-      ["WRAP_TINT"] = {
+      ["Barva obalu"] = {
         "COMPONENT_LONGARM_WRAP_TINT_WHITE",
         "COMPONENT_LONGARM_WRAP_TINT_BLACK",
         "COMPONENT_LONGARM_WRAP_TINT_A_1",
@@ -2740,13 +2731,13 @@ Config.shared_components = {
         "COMPONENT_LONGARM_WRAP_TINT_E_10",
       },
 
-      ["STRAP"] = {
+      ["Popruh"] = {
         "COMPONENT_REPEATER_STRAP01",
         "COMPONENT_RIFLE_CS_STRAP01",
         "COMPONENT_REPEATER_CLOTH_STRAP01",
         "COMPONENT_LEFTSHOULDER_STRAP01",
       },          
-      ["STRAP_TINT"] = {
+      ["Barva popruhu"] = {
         "COMPONENT_LONGARM_STRAP_TINT_A_1",
         "COMPONENT_LONGARM_STRAP_TINT_A_2",
         "COMPONENT_LONGARM_STRAP_TINT_A_3",
@@ -2756,19 +2747,19 @@ Config.shared_components = {
         "COMPONENT_LONGARM_STRAP_TINT_A_7",
         "COMPONENT_LONGARM_STRAP_TINT_A_8",
       }, 
-        ["CYLINDER_ENGRAVING"] = {
+        ["Rytiny na válci"] = {
           "COMPONENT_SHOTGUN_CYLINDER_ENGRAVING_1",
           "COMPONENT_SHOTGUN_CYLINDER_ENGRAVING_2",
           "COMPONENT_SHOTGUN_CYLINDER_ENGRAVING_3",
           "COMPONENT_SHOTGUN_CYLINDER_ENGRAVING_4",
         },
-        ["FRAME_ENGRAVING"] = {
+        ["Rytiny na rámu"] = {
           "COMPONENT_SHOTGUN_FRAME_ENGRAVING_1",
           "COMPONENT_SHOTGUN_FRAME_ENGRAVING_2",
           "COMPONENT_SHOTGUN_FRAME_ENGRAVING_3",
           "COMPONENT_SHOTGUN_FRAME_ENGRAVING_4",
         },
-        ["BARREL_ENGRAVING"] = {
+        ["Rytiny na hlavni"] = {
           "COMPONENT_SHOTGUN_BARREL_ENGRAVING_1",
           "COMPONENT_SHOTGUN_BARREL_ENGRAVING_2",
           "COMPONENT_SHOTGUN_BARREL_ENGRAVING_3",
@@ -2777,7 +2768,7 @@ Config.shared_components = {
     },
 
     ["MELEE_BLADE"] = {
-        ["MELEE_BLADE_MATERIAL"] = {
+        ["Materiál čepele"] = {
           "COMPONENT_MELEE_BLADE_MATERIAL_7",
           "COMPONENT_MELEE_BLADE_MATERIAL_5",
           "COMPONENT_MELEE_BLADE_MATERIAL_6",
@@ -2788,12 +2779,12 @@ Config.shared_components = {
           "COMPONENT_MELEE_BLADE_MATERIAL_4",
           "COMPONENT_MELEE_BLADE_MATERIAL_9",
         }, 
-        ["MELEE_BLADE_ENGRAVING"] = {
+        ["Rytiny na čepeli"] = {
           "COMPONENT_MELEE_BLADE_ENGRAVING_1",
           "COMPONENT_MELEE_BLADE_ENGRAVING_2",
           "COMPONENT_MELEE_BLADE_ENGRAVING_3",
         }, 
-        ["MELEE_BLADE_ENGRAVING_MATERIAL"] = {
+        ["Barva rytin na čepeli"] = {
           "COMPONENT_MELEE_BLADE_ENGRAVING_MATERIAL_1",
           "COMPONENT_MELEE_BLADE_ENGRAVING_MATERIAL_2",
           "COMPONENT_MELEE_BLADE_ENGRAVING_MATERIAL_3",
@@ -2809,7 +2800,7 @@ Config.shared_components = {
           "COMPONENT_MELEE_BLADE_ENGRAVING_MATERIAL_14",
         },  
 
-        ["GRIP_TINT"] = {
+        ["Materiál rukojeti"] = {
           "COMPONENT_MELEE_GRIP_TINT_A_1",
           "COMPONENT_MELEE_GRIP_TINT_A_2",
           "COMPONENT_MELEE_GRIP_TINT_A_3",
