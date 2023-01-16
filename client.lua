@@ -740,6 +740,10 @@ function Open_Store_Menu(bool)
 end
 
 Citizen.CreateThread(function() 
+  SendNUIMessage({
+    type = "language",
+    Language = Config.LanguageWeapons
+    })
     while true do 
         Citizen.Wait(10)
         local sleep = true

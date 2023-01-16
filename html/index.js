@@ -57,6 +57,9 @@ $(function () {
 
     window.addEventListener('message', function(event) {
         var item = event.data;
+        if (item.type === "language") {
+            Language = item.Language
+        }
         if (item.type === "customization_menu") {
             if (item.status == true) {
                 display(true)
@@ -224,7 +227,7 @@ function shared_data(){
     for (var k in global_table) {
         // var str = k
         // const result1 = str.replaceAll('_', ' ');
-        if (k !== "Rytiny na rámu") {
+        if (k !== Language[7]) {
             dataHtml += '<div onclick="openMe2(\''+ k +'\')" class="grid-item2" id="gridInfo'+k+'"><div id="text">'+k+'</div></div>'
         }
     }
@@ -261,29 +264,29 @@ function openMe(k) {
                     dataHtml2 += '<div id="selectMe" onclick="useComponent(\'cleanIt\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/clean.png" width="32" height="32"></div>'
                     for (var b in data) {
                         if (weapType == "SHORTARM") {
-                            if (k == "Materiál spouště" || k == "Materiál hledí"|| k == "Materiál kohoutu"|| k == "Materiál hlavně"|| k == "Materiál válce" || k == "Materiál rámu" || k == "Materiál čepele") {
+                            if (k == Language[5] || k == Language[8]|| k == Language[2]|| k == Language[12]|| k == Language[15] || k == Language[3] || k == Language[31]) {
                                 dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/MATERIAL_COLOR/'+data[b].replace(/\D/g, '')+'.png" width="32" height="32"></div>'
-                            } else if (k == "Barva rytin na rámu" || k == "Barva rytin na válci"|| k == "Barva rytin na hlavni"|| k == "Barva rytin na čepeli") {
+                            } else if (k == Language[11] || k == Language[17]|| k == Language[14]|| k == Language[33]) {
                                 dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/MATERIAL_ENGRAVING_COLOR/'+data[b].replace(/\D/g, '')+'.png" width="32" height="32"></div>'
-                            } else if (k == "Rytiny na rukojeti") {
+                            } else if (k == Language[19]) {
                                 dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/GRIPSTOCK_ENGRAVING_SHORTARM/'+data[b].replace(/\D/g, '')+'.png" width="32" height="32"></div>'
-                            } else if (k == "Rytiny na hlavni" || k == "Rytiny na válci" || k == "Rytiny na rámu" || k == "Rytiny na čepeli") {
+                            } else if (k == Language[13] || k == Language[16] || k == Language[7] || k == Language[32]) {
                                 dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/ENGRAVING/'+data[b].replace(/\D/g, '')+'.png" width="32" height="32"></div>'
-                            } else if (k == "Barva obalu") {
+                            } else if (k == Language[22]) {
                                 dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/WRAP_COLOR/'+b+'.png" width="32" height="32"></div>'
                             } else {
                                 dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/BARREL/1.png" width="32" height="32"></div>'
                             }
                         } else {
-                            if (k == "Materiál spouště" || k == "Materiál hledí"|| k == "Materiál kohoutu"|| k == "Materiál hlavně"|| k == "Materiál válce"|| k == "Materiál rámu" || k == "Materiál čepele") {
+                            if (k == Language[5] || k == Language[8]|| k == Language[2]|| k == Language[12]|| k == Language[15]|| k == Language[3] || k == Language[31]) {
                                 dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/MATERIAL_COLOR/'+data[b].replace(/\D/g, '')+'.png" width="32" height="32"></div>'
-                            } else if (k == "Barva rytin na rámu" || k == "Barva rytin na válci"|| k == "Barva rytin na hlavni" || k == "Barva rytin na čepeli") {
+                            } else if (k == Language[11] || k == Language[17]|| k == Language[14] || k == Language[33]) {
                                 dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/MATERIAL_ENGRAVING_COLOR/'+data[b].replace(/\D/g, '')+'.png" width="32" height="32"></div>'
-                            } else if (k == "Rytiny na rukojeti") {
+                            } else if (k == Language[19]) {
                                 dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/GRIPSTOCK_ENGRAVING_LONGARM/'+data[b].replace(/\D/g, '')+'.png" width="32" height="32"></div>'
-                            } else if (k == "Rytiny na hlavni" || k == "Rytiny na válci" || k == "Rytiny na rámu" || k == "Rytiny na čepeli") {
+                            } else if (k == Language[13] || k == Language[16] || k == Language[7] || k == Language[32]) {
                                 dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/ENGRAVING/'+data[b].replace(/\D/g, '')+'.png" width="32" height="32"></div>'
-                            } else if (k == "Barva obalu") {
+                            } else if (k == Language[22]) {
                                 dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/WRAP_COLOR/'+b+'.png" width="32" height="32"></div>'
                             } else {
                             dataHtml2 += '<div id="selectMe" onclick="useComponent(\''+data[b]+'\', \''+k+'\')" onmouseover="overMouse()" onmouseout="outMouse()"><img id="img" src="images/BARREL/1.png" width="32" height="32"></div>'
