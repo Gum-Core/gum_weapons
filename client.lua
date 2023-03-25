@@ -177,7 +177,7 @@ function applyAllComponentToWeapon(weaponComponents)
             engraveAply(b, true)
           end
         end
-        Citizen.Wait(100)
+        Citizen.Wait(50)
         for a,b in pairs(weaponComponents) do
           if string.find(b, "STRAP")  then
             Citizen.InvokeNative(0x74C9090FDD1BB48E, ped, GetHashKey("COMPONENT_REPEATER_STRAP01"), WeaponHash, true)
@@ -291,7 +291,7 @@ function applyAllComponentToWeapon(weaponComponents)
         if Citizen.InvokeNative(0x49E40483948AF062, WeaponHash) then
           Citizen.InvokeNative(0x74C9090FDD1BB48E, ped, GetHashKey("COMPONENT_FISHING_LINE"), WeaponHash, true)
         end
-        Citizen.Wait(100)
+        Citizen.Wait(0)
         TriggerEvent("gum_inventory:sendOkLoading")
     end)
   else
