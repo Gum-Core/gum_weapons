@@ -20,6 +20,17 @@ Config.Language = {
   [17] = {text="You have under 50% ammo, you refill your weapon."}
 }
 
+Config.LanguageFilter = {
+  [1] = "Revolver",
+  [2] = "Pistol",
+  [3] = "Repeater",
+  [4] = "Rifle",
+  [5] = "Shotgun",
+  [6] = "Arrows",
+  [7] = "Varmint",
+}
+
+
 Config.LanguageWeapons = {
   [1] = "Typ hlavně",
   [2] = "Typ obalu",
@@ -48,13 +59,14 @@ Config.LanguageWeapons = {
   [25] = "Barva popruhu",
   [26] = "Zaměřovač",
   [27] = "STOCK",
-  [28] = "Barva dřeva",
+  [28] = "Barva dřeva luku",
   [29] = "Barva kůže",
   [30] = "Barva šňůry",
   [31] = "Vlasec se splávek",
   [32] = "Materiál čepele",
   [33] = "Rytiny na čepeli",
   [34] = "Barva rytin na čepeli",
+  [35] = "Barva dřeva",
 }
 
 Config.priceTable = {
@@ -92,6 +104,7 @@ Config.priceTable = {
    [Config.LanguageWeapons[32]] = 0.20,
    [Config.LanguageWeapons[33]] = 0.20,
    [Config.LanguageWeapons[34]] = 0.20,
+   [Config.LanguageWeapons[35]] = 2.20,
 }
 
 Config.weaponShops = { 
@@ -1320,7 +1333,7 @@ Config.weapon_object_load_for_redner = {
     ["WEAPON_REVOLVER_NAVY"] = "w_revolver_navy01",
   }
   
-
+  
   Config.model_specific_components = {
     ["WEAPON_REVOLVER_CATTLEMAN"] = {
         [Config.LanguageWeapons[1]] = {
@@ -1504,25 +1517,36 @@ Config.weapon_object_load_for_redner = {
     },
 
     ["WEAPON_REVOLVER_NAVY"] = {
-        [Config.LanguageWeapons[1]] = {
-          "COMPONENT_REVOLVER_NAVY_BARREL_SHORT",
-          "COMPONENT_REVOLVER_NAVY_BARREL_LONG",
-          -- "COMPONENT_REVOLVER_NAVY_BARREL_CROSSOVER",
-        },
-        [Config.LanguageWeapons[7]] = {
-          "COMPONENT_REVOLVER_NAVY_GRIP",
-          "COMPONENT_REVOLVER_NAVY_GRIP_IRONWOOD",
-          "COMPONENT_REVOLVER_NAVY_GRIP_PEARL",
-          "COMPONENT_REVOLVER_NAVY_GRIP_EBONY",
-          -- "COMPONENT_REVOLVER_NAVY_GRIP_CROSSOVER",
-        },
-        [Config.LanguageWeapons[5]] = {
-          "COMPONENT_REVOLVER_NAVY_SIGHT_NARROW",
-          "COMPONENT_REVOLVER_NAVY_SIGHT_WIDE",
-          -- "COMPONENT_REVOLVER_NAVY_SIGHT_CROSSOVER",
-        },
+      [Config.LanguageWeapons[1]] = {
+        "COMPONENT_REVOLVER_NAVY_BARREL_SHORT",
+        "COMPONENT_REVOLVER_NAVY_BARREL_LONG",
+        -- "COMPONENT_REVOLVER_NAVY_BARREL_CROSSOVER",
+      },
+      [Config.LanguageWeapons[7]] = {
+        "COMPONENT_REVOLVER_NAVY_GRIP",
+        "COMPONENT_REVOLVER_NAVY_GRIP_IRONWOOD",
+        "COMPONENT_REVOLVER_NAVY_GRIP_PEARL",
+        "COMPONENT_REVOLVER_NAVY_GRIP_EBONY",
+        -- "COMPONENT_REVOLVER_NAVY_GRIP_CROSSOVER",
+      },
+      [Config.LanguageWeapons[5]] = {
+        "COMPONENT_REVOLVER_NAVY_SIGHT_NARROW",
+        "COMPONENT_REVOLVER_NAVY_SIGHT_WIDE",
+        -- "COMPONENT_REVOLVER_NAVY_SIGHT_CROSSOVER",
+      },
+  },
+  ["weapon_revolver_navy_crossover"] = {
+    [Config.LanguageWeapons[1]] = {
+      "COMPONENT_REVOLVER_NAVY_BARREL_CROSSOVER",
     },
-
+    [Config.LanguageWeapons[7]] = {
+      "COMPONENT_REVOLVER_NAVY_GRIP_CROSSOVER",
+    },
+    [Config.LanguageWeapons[5]] = {
+      "COMPONENT_REVOLVER_NAVY_SIGHT_CROSSOVER",
+    },
+},
+    
 
 
     ["WEAPON_REPEATER_CARBINE"] = {
@@ -2196,7 +2220,7 @@ Config.shared_components = {
           "COMPONENT_SHORTARM_GRIPSTOCK_ENGRAVING_6",
         }, 
 
-        -- ["GRIPSTOCK_TINT"] = {
+        -- [Config.LanguageWeapons[35]] = {
         --   "COMPONENT_SHORTARM_GRIPSTOCK_TINT_A_1",
         --   "COMPONENT_SHORTARM_GRIPSTOCK_TINT_A_2",
         --   "COMPONENT_SHORTARM_GRIPSTOCK_TINT_A_3",
@@ -2379,28 +2403,28 @@ Config.shared_components = {
         "COMPONENT_LONGARM_GRIP_MATERIAL_BURLED",
       }, 
 
-      -- ["GRIPSTOCK_TINT"] = {
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_1",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_2",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_3",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_4",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_5",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_6",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_7",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_8",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_1",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_2",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_3",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_4",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_5",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_6",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_7",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_8",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_GUTTAPERCHA",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_PEARL",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_GRAY_BIRCH",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_BURLED",
-      -- }, 
+      [Config.LanguageWeapons[35]] = {
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_1",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_2",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_3",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_4",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_5",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_6",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_7",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_8",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_1",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_2",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_3",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_4",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_5",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_6",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_7",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_8",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_GUTTAPERCHA",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_PEARL",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_GRAY_BIRCH",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_BURLED",
+      }, 
 
        [Config.LanguageWeapons[20]] = {
         "COMPONENT_LONGARM_GRIPSTOCK_ENGRAVING_1",
@@ -2663,28 +2687,28 @@ Config.shared_components = {
         "COMPONENT_LONGARM_GRIP_MATERIAL_BURLED",
       }, 
 
-      -- ["GRIPSTOCK_TINT"] = {
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_1",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_2",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_3",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_4",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_5",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_6",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_7",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_8",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_1",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_2",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_3",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_4",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_5",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_6",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_7",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_8",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_GUTTAPERCHA",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_PEARL",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_GRAY_BIRCH",
-      --   "COMPONENT_LONGARM_GRIPSTOCK_TINT_BURLED",
-      -- }, 
+      [Config.LanguageWeapons[35]] = {
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_1",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_2",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_3",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_4",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_5",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_6",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_7",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_A_8",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_1",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_2",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_3",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_4",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_5",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_6",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_7",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_B_8",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_GUTTAPERCHA",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_PEARL",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_GRAY_BIRCH",
+        "COMPONENT_LONGARM_GRIPSTOCK_TINT_BURLED",
+      }, 
 
        [Config.LanguageWeapons[20]] = {
         "COMPONENT_LONGARM_GRIPSTOCK_ENGRAVING_1",
